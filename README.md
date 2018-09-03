@@ -1,2 +1,2 @@
 # ProjetBFI
-Projet Spring d'application banquaire
+Projet Spring d'application bancaire
