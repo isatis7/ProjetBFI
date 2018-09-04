@@ -22,6 +22,7 @@
 						<form:hidden path="client"/>
 						<form:hidden path="role"/>
 					</div>
+					
 					<div class="form-group col">
 						<form:label path="reference"><spring:message code="entities.demandeFinancement.reference" /><span class="text-danger"><spring:message code="commons.symbols.required" /></span></form:label>
 						<div class="input-group">
