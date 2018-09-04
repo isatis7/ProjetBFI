@@ -13,20 +13,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import fr.formation.lamarmite.dto.CivilityDTO;
-import fr.formation.lamarmite.entities.*;
-import fr.formation.lamarmite.services.*;
+import fr.ajcbanque.projetBFI.dto.CivilityDTO;
+import fr.ajcbanque.projetBFI.entities.User;
 
 @Controller
 @RequestMapping("/users")
 public class UserController extends BaseController {
-    private final ICivilityService civilityService;
-    private final IUserService	   userService;
+    private final IUserService userService;
 
     @Autowired
-    protected UserController(ICivilityService civilityService,
-	    IUserService userService) {
-	this.civilityService = civilityService;
+    protected UserController(IUserService userService) {
 	this.userService = userService;
     }
 

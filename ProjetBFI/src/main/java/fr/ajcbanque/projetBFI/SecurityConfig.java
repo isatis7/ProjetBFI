@@ -13,7 +13,7 @@ import org.springframework.security.web.csrf.CsrfFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.filter.CharacterEncodingFilter;
 
-import fr.formation.lamarmite.services.ILoginService;
+import fr.ajcbanque.projetBFI.services.ILoginService;
 
 /**
  * La classe de configuration de Spring Security.

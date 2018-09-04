@@ -8,6 +8,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import fr.ajcbanque.projetBFI.entities.User;
+
 public class Principal implements UserDetails {
     private static final long serialVersionUID = 9034216980615315120L;
     private User	      user;
