@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import fr.ajcbanque.projetBFI.dto.CivilityDTO;
 import fr.ajcbanque.projetBFI.entities.User;
+import fr.ajcbanque.projetBFI.services.IUserService;
 
 @Controller
 @RequestMapping("/users")
