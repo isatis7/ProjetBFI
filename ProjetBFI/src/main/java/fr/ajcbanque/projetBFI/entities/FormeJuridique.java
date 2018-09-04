@@ -10,19 +10,19 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class TypeFinancement implements Serializable {
+public class FormeJuridique implements Serializable {
     /**
      *
      */
-    private static final long serialVersionUID = 3526288089902229661L;
+    private static final long serialVersionUID = 3992325391596179656L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long	      id;
     @NotNull(message = "{error.commons.required}")
-    @Column(length = 50, nullable = false, unique = true)
+    @Column(length = 20, nullable = false, unique = true)
     private String	      nom;
 
-    public TypeFinancement() {
+    public FormeJuridique() {
 	//
     }
 
@@ -62,7 +62,7 @@ public class TypeFinancement implements Serializable {
 	if (getClass() != obj.getClass()) {
 	    return false;
 	}
-	TypeFinancement other = (TypeFinancement) obj;
+	FormeJuridique other = (FormeJuridique) obj;
 	if (id == null) {
 	    if (other.id != null) {
 		return false;
@@ -82,6 +82,6 @@ public class TypeFinancement implements Serializable {
 
     @Override
     public String toString() {
-	return "TypeFinancement [id=" + id + ", nom=" + nom + "]";
+	return "FormeJuridique [id=" + id + ", nom=" + nom + "]";
     }
 }
