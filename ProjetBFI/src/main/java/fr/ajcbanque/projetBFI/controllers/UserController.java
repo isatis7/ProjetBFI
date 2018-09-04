@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import fr.ajcbanque.projetBFI.entities.User;
+import fr.ajcbanque.projetBFI.services.IUserService;
 
 @Controller
 @RequestMapping("/users")
