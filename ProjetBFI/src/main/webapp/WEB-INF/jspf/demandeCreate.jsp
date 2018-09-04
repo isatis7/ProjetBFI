@@ -47,6 +47,16 @@
 					</div>
 				</div>
 				
+				<div class="form-row">
+			 		<spring:message code="commons.formats.date" var="datePattern" />
+					<div class="form-group col">
+						<form:label path="dateDemande"><spring:message code="entities.menu.dateDemande" /><span class="text-danger"><spring:message code="commons.symbols.required" /></span></form:label>
+						<form:input path="dateDemande" maxlength="10" placeHolder="${datePattern}" cssClass="form-control datepicker" cssErrorClass="form-control datepicker is-invalid" autocomplete="off" />
+						<form:errors element="div" path="dateDemande" cssClass="invalid-feedback" />
+					</div>
+					
+				</div>
+				
 			 	<div class="form-row">
 					<div class="form-group col">
 						<form:label path="code"><spring:message code="entities.course.code" /><span class="text-danger"><spring:message code="commons.symbols.required" /></span></form:label>
