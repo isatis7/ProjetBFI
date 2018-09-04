@@ -54,52 +54,32 @@
 						<form:input path="dateEffective" maxlength="10" placeHolder="${datePattern}" cssClass="form-control datepicker" cssErrorClass="form-control datepicker is-invalid" autocomplete="off" />
 						<form:errors element="div" path="dateEffective" cssClass="invalid-feedback" />
 					</div>
-					
 				</div>
 				
-			 	<div class="form-row">
+				<div class="form-row">
 					<div class="form-group col">
-						<form:label path="code"><spring:message code="entities.course.code" /><span class="text-danger"><spring:message code="commons.symbols.required" /></span></form:label>
-						<form:input path="code" maxlength="4" cssClass="form-control" cssErrorClass="form-control is-invalid" autocomplete="off" />
-						<form:errors element="div" path="code" cssClass="invalid-feedback" />
-					</div>
-					<div class="form-group col">
-						<form:label path="type.id"><spring:message code="entities.course.type" /><span class="text-danger"><spring:message code="commons.symbols.required" /></span></form:label>
-						<form:select path="type.id" cssClass="form-control" cssErrorClass="form-control is-invalid">
-							<form:option value="0"><spring:message code="commons.forms.select" /></form:option>
-							<form:options items="${courseTypes}" itemValue="id" itemLabel="name" />
-						</form:select>
-						<form:errors element="div" path="type.id" cssClass="invalid-feedback" />
-					</div>
-					<div class="form-group col">
-						<form:label path="price"><spring:message code="entities.course.price" /><span class="text-danger"><spring:message code="commons.symbols.required" /></span></form:label>
+						<form:label path="devise"><spring:message code="entities.demandeFinancement.devise" /><span class="text-danger"><spring:message code="commons.symbols.required" /></span></form:label>
 						<div class="input-group">
-							<div class="input-group-prepend">
-					        	<div class="input-group-text"><spring:message code="commons.symbols.euro" /></div>
-					        </div>
-							<form:input path="price" maxlength="5" placeHolder="0.00" cssClass="form-control" cssErrorClass="form-control is-invalid" autocomplete="off" />
-							<form:errors element="div" path="price" cssClass="invalid-feedback" />
+							<div class="input-group-prepend"></div>
+							<form:radiobutton path="devise" cssClass="form-control" cssErrorClass="form-control is-invalid" value="EUR" label="EUR" />
+							<form:radiobutton path="devise" cssClass="form-control" cssErrorClass="form-control is-invalid" value="USD" label="USD" />
+							<form:errors element="div" path="devise" cssClass="invalid-feedback" />
 						</div>
 					</div>
 				</div>
-				<div class="form-group">
-					<form:label path="frenchDescription"><spring:message code="entities.course.frenchDescription" /></form:label>
-					<div class="input-group">
-						<div class="input-group-prepend">
-						    <div class="input-group-text"><spring:message code="commons.symbols.isoFrench" /></div>
+				<div class="form-row">
+					<div class="form-group col">
+						<form:label path="typeFinancement"><spring:message code="entities.demandeFinancement.typeFinancement" /><span class="text-danger"><spring:message code="commons.symbols.required" /></span></form:label>
+						<div class="input-group">
+							<div class="input-group-prepend"></div>
+							<form:radiobutton path="typeFinancement" cssClass="form-control" cssErrorClass="form-control is-invalid" value="simple" code="entities.demandeFinancement.typeFinancement.simple" />
+							<form:radiobutton path="typeFinancement" cssClass="form-control" cssErrorClass="form-control is-invalid" value="revolving" code="entities.demandeFinancement.typeFinancement.revolving" />
+							<form:radiobutton path="typeFinancement" cssClass="form-control" cssErrorClass="form-control is-invalid" value="syndique" code="entities.demandeFinancement.typeFinancement.syndique" />
+							<form:errors element="div" path="typeFinancement" cssClass="invalid-feedback" />
 						</div>
-						<form:textarea path="frenchDescription" rows="5" cssClass="form-control" lang="fr" />
 					</div>
 				</div>
-				<div class="form-group">
-					<form:label path="englishDescription"><spring:message code="entities.course.englishDescription" /></form:label>
-					<div class="input-group">
-						<div class="input-group-prepend">
-						    <div class="input-group-text"><spring:message code="commons.symbols.isoEnglish" /></div>
-						</div>
-						<form:textarea path="englishDescription" rows="5" cssClass="form-control" lang="en" />
-					</div>
-				</div>
+				
 				<button type="reset" class="btn btn-primary mb-3"><spring:message code="commons.forms.reset" /></button>
 				<form:button class="btn btn-primary mb-3"><spring:message code="commons.forms.save" /></form:button>
 			</form:form>
