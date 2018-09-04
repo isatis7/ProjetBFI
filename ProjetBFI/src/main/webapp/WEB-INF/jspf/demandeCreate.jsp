@@ -14,34 +14,34 @@
 	<div class="container-fluid">
 		<section>
 			<h1 class="text-primary"><spring:message code="entities.demande.create.title" /></h1>
-			<h3 class="text-primary"><spring:message code="entities.demande.create.hello" />${client.nom}<spring:message code=", nous sommes le" /><fmt:formatDate value="${today}" pattern="dd/MM/yyyy"/></h3>
+			<h3 class="text-primary"><spring:message code="entities.demande.create.hello" />${client.nom}, nous sommes le<fmt:formatDate value="${today}" pattern="dd/MM/yyyy"/></h3>
 			<form:form action="create" method="POST" modelAttribute="demandeFinancement">
 				<div class="form-row">
 					<div class="form-group col">
 						<form:label path="reference"><spring:message code="entities.demandeFinancement.reference" /><span class="text-danger"><spring:message code="commons.symbols.required" /></span></form:label>
 						<div class="input-group">
 							<div class="input-group-prepend"></div>
-							<form:input path="reference" maxlength="10" cssClass="form-control" cssErrorClass="form-control is-invalid" autocomplete="off" lang="fr" />
+							<form:input path="reference" maxlength="10" placeHolder="REF0111222" cssClass="form-control" cssErrorClass="form-control is-invalid" autocomplete="off" lang="fr" />
 							<form:errors element="div" path="reference" cssClass="invalid-feedback" />
 						</div>
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="form-group col">
-						<form:label path="reference"><spring:message code="entities.demandeFinancement.reference" /><span class="text-danger"><spring:message code="commons.symbols.required" /></span></form:label>
+						<form:label path="duree"><spring:message code="entities.demandeFinancement.duree" /><span class="text-danger"><spring:message code="commons.symbols.required" /></span></form:label>
 						<div class="input-group">
 							<div class="input-group-prepend"></div>
-							<form:input path="reference" maxlength="10" cssClass="form-control" cssErrorClass="form-control is-invalid" autocomplete="off" lang="fr" />
-							<form:errors element="div" path="reference" cssClass="invalid-feedback" />
+							<form:input path="duree" cssClass="form-control" cssErrorClass="form-control is-invalid" autocomplete="off" lang="fr" />
+							<form:errors element="div" path="duree" cssClass="invalid-feedback" />
 						</div>
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="form-group col">
-						<form:label path="reference"><spring:message code="entities.demandeFinancement.reference" /><span class="text-danger"><spring:message code="commons.symbols.required" /></span></form:label>
+						<form:label path="montant"><spring:message code="entities.demandeFinancement.montant" /><span class="text-danger"><spring:message code="commons.symbols.required" /></span></form:label>
 						<div class="input-group">
 							<div class="input-group-prepend"></div>
-							<form:input path="reference" maxlength="10" cssClass="form-control" cssErrorClass="form-control is-invalid" autocomplete="off" lang="fr" />
+							<form:input path="montant" cssClass="form-control" cssErrorClass="form-control is-invalid" autocomplete="off" lang="fr" />
 							<form:errors element="div" path="reference" cssClass="invalid-feedback" />
 						</div>
 					</div>
