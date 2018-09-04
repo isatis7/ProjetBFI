@@ -18,8 +18,8 @@
 			<form:form action="create" method="POST" modelAttribute="demandeFinancement">
 				<div class="form-row">
 					<div class="form-group col">
-						<input type="hidden" name="client.id" />
-						<form:hidden path="codeClient"/>
+						<input type="hidden" name="client.id" value="${client.id}" />
+						<form:hidden path="client"/>
 						<form:hidden path="role"/>
 					</div>
 					<div class="form-group col">
