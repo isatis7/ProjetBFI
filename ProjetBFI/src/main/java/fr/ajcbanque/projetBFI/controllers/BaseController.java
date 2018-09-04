@@ -16,6 +16,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 
+import fr.ajcbanque.projetBFI.AppLanguage;
+
 public abstract class BaseController {
     protected BaseController() {
 	//
