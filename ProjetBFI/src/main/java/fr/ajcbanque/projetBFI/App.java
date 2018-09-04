@@ -1,4 +1,4 @@
-package fr.ajcbanque.ProjetBFI;
+package fr.ajcbanque.projetBFI;
 
 /**
  * Hello world!
