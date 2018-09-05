@@ -162,7 +162,7 @@ public class User implements Serializable {
     }
 
     public static enum Role {
-	ROLE_CLIENT, ROLE_PRO, ROLE_ADMIN;
+	ROLE_USER_CLIENT, ROLE_USER_PRO, ROLE_ADMIN, ROLE_PO;
 	public String getName() {
 	    return name();
 	}

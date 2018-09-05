@@ -32,13 +32,13 @@ public class HomeController extends BaseController {
 	return "welcome";
     }
 
-    @PreAuthorize("hasRole('ROLE_CLIENT')")
+    @PreAuthorize("hasRole('ROLE_USER_CLIENT')")
     @GetMapping("/toCreateDemande")
     public String toCreateDemande() {
 	return "demandeCreate";
     }
 
-    @PreAuthorize("hasRole('ROLE_PRO')")
+    @PreAuthorize("hasRole('ROLE_USER_PRO')")
     @GetMapping("/toListDemande")
     public String toListDemande(Model model) {
 	List<DemandeFiDTO> demandes = demandeFiService
@@ -47,7 +47,7 @@ public class HomeController extends BaseController {
 	return "demandeList";
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_PO')")
     @GetMapping("/toListUser")
     public String toListUser(Model model) {
 	List<UserDTO> users = userService.findAllAsDTO(getAppLanguage());
