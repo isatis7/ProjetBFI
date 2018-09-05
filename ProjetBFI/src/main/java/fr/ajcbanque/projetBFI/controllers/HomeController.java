@@ -2,6 +2,7 @@ package fr.ajcbanque.projetBFI.controllers;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,10 +11,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import fr.ajcbanque.projetBFI.dto.DemandeFiDTO;
 import fr.ajcbanque.projetBFI.dto.UserDTO;
+import fr.ajcbanque.projetBFI.services.IDemandeFiService;
+import fr.ajcbanque.projetBFI.services.IUserService;
 
 @Controller
 @RequestMapping("/home")
 public class HomeController extends BaseController {
+    private final IDemandeFiService demandeFiService;
+    private final IUserService	    userService;
+
+    @Autowired
+    protected HomeController(IDemandeFiService demandeFiService,
+	    IUserService userService) {
+	this.demandeFiService = demandeFiService;
+	this.userService = userService;
+    }
+
     @GetMapping("/welcome")
     public String welcome(Model model) {
 	return "welcome";
@@ -28,7 +41,7 @@ public class HomeController extends BaseController {
     @PreAuthorize("hasRole('ROLE_PRO')")
     @GetMapping("/toListDemande")
     public String toListDemande(Model model) {
-	List<DemandeFiDTO> demandes = demandeService
+	List<DemandeFiDTO> demandes = demandeFiService
 		.findAllAsDTO(getAppLanguage());
 	model.addAttribute("demandes", demandes);
 	return "demandeList";
