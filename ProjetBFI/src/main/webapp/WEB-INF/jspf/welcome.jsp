@@ -12,7 +12,7 @@
 </head>
 <body>
 	<c:import url="headerNav.jsp" />
-	<p>Hello world!</p>
+	<c:import url="login.jsp" />
 	<c:import url="footerNav.jsp" />
 </body>
 </html>
