@@ -35,7 +35,7 @@ public class User implements Serializable {
     private String	      password;
     @NotNull(message = "{error.commons.required}")
     @Enumerated(EnumType.STRING)
-    @Column(length = 10, nullable = false)
+    @Column(length = 20, nullable = false)
     private Role	      role		    = Role.ROLE_USER;
     @Convert(converter = BooleanConverter.class)
     @Column(length = 1, nullable = false)
