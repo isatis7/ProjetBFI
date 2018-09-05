@@ -11,8 +11,6 @@
 <c:import url="commonsHead.jsp" />
 </head>
 <body>
-	<c:import url="headerNav.jsp" />
 	<c:import url="login.jsp" />
-	<c:import url="footerNav.jsp" />
 </body>
 </html>

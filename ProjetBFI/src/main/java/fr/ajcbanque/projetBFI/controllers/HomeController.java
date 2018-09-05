@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import fr.ajcbanque.projetBFI.dto.DemandeFiDTO;
 import fr.ajcbanque.projetBFI.dto.UserDTO;
+import fr.ajcbanque.projetBFI.entities.User.Role;
 import fr.ajcbanque.projetBFI.services.IDemandeFiService;
 import fr.ajcbanque.projetBFI.services.IUserService;
 
@@ -28,7 +29,17 @@ public class HomeController extends BaseController {
     }
 
     @GetMapping("/welcome")
-    public String welcome(Model model) {
+    public String welcome() {
+	Role role = getRole();
+	if (role.isAdmin() || role.isPO()) {
+	    return "redirect:/welcome/toUserList";
+	}
+	if (role.isClient()) {
+	    return "redirect:/welcome/toCreateDemande";
+	}
+	if (role.isPro()) {
+	    return "redirect:/welcome/toListDemande";
+	}
 	return "welcome";
     }
 

@@ -163,6 +163,22 @@ public class User implements Serializable {
 
     public static enum Role {
 	ROLE_USER_CLIENT, ROLE_USER_PRO, ROLE_ADMIN, ROLE_PO;
+	public boolean isAdmin() {
+	    return this == ROLE_ADMIN;
+	}
+
+	public boolean isClient() {
+	    return this == ROLE_USER_CLIENT;
+	}
+
+	public boolean isPro() {
+	    return this == ROLE_USER_PRO;
+	}
+
+	public boolean isPO() {
+	    return this == ROLE_PO;
+	}
+
 	public String getName() {
 	    return name();
 	}
