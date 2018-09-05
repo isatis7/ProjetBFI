@@ -1,21 +1,28 @@
 package fr.ajcbanque.projetBFI.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import fr.ajcbanque.projetBFI.AppLanguage;
+import fr.ajcbanque.projetBFI.dto.UserDTO;
 import fr.ajcbanque.projetBFI.entities.User;
 import fr.ajcbanque.projetBFI.repositories.IUserJpaRepository;
+import fr.ajcbanque.projetBFI.repositories.IUserRepository;
 
 @Service
 public class UserService implements IUserService {
     private final IUserJpaRepository userJpaRepository;
+    private final IUserRepository    userRepository;
 
     @Autowired
-    protected UserService(IUserJpaRepository userJpaRepository) {
+    protected UserService(IUserJpaRepository userJpaRepository,
+	    IUserRepository userRepository) {
 	this.userJpaRepository = userJpaRepository;
+	this.userRepository = userRepository;
     }
 
     @Override
@@ -45,5 +52,10 @@ public class UserService implements IUserService {
     public User findById(Long id) {
 	Optional<User> optional = userJpaRepository.findById(id);
 	return optional.get();
+    }
+
+    @Override
+    public List<UserDTO> findAllAsDTO(AppLanguage lang) {
+	return userRepository.findAllAsDTO(lang);
     }
 }
