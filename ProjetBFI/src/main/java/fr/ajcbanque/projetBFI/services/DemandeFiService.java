@@ -2,11 +2,14 @@ package fr.ajcbanque.projetBFI.services;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import fr.ajcbanque.projetBFI.AppLanguage;
 import fr.ajcbanque.projetBFI.dto.DemandeFiDTO;
 import fr.ajcbanque.projetBFI.entities.DemandeFinancement;
 
-public class DemandeService implements IDemandeFiService {
+@Service
+public class DemandeFiService implements IDemandeFiService {
     @Override
     public DemandeFinancement findById(Long id) {
 	// TODO Auto-generated method stub
