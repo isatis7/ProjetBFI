@@ -26,6 +26,9 @@ public class DemandeController extends BaseController {
 	this.demandeFiService = demandeFiService;
     }
 
+    /*
+     * Méthode de recupération et et de renvoie vers la page concerné
+     */
     @GetMapping("/toCreate")
     public String create(
 	    @Valid @ModelAttribute("demandeFinancement") DemandeFinancement demandeFi,
