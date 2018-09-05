@@ -19,8 +19,8 @@ public class RatingInterne implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long	      id;
     @NotNull(message = "{error.commons.required}")
-    @Column(nullable = false)
-    private Code	      code;
+    @Column(length = 1, nullable = false, unique = true)
+    private String	      code;
     @NotNull(message = "{error.commons.required}")
     @Column(nullable = false)
     private Float	      coefficientRisque;
@@ -37,11 +37,11 @@ public class RatingInterne implements Serializable {
 	this.id = id;
     }
 
-    public Code getCode() {
+    public String getCode() {
 	return code;
     }
 
-    public void setCode(Code code) {
+    public void setCode(String code) {
 	this.code = code;
     }
 
@@ -76,7 +76,11 @@ public class RatingInterne implements Serializable {
 	    return false;
 	}
 	RatingInterne other = (RatingInterne) obj;
-	if (code != other.code) {
+	if (code == null) {
+	    if (other.code != null) {
+		return false;
+	    }
+	} else if (!code.equals(other.code)) {
 	    return false;
 	}
 	if (coefficientRisque == null) {
@@ -100,12 +104,5 @@ public class RatingInterne implements Serializable {
     public String toString() {
 	return "RatingInterne [id=" + id + ", code=" + code
 		+ ", coefficientRisque=" + coefficientRisque + "]";
-    }
-
-    public static enum Code {
-	A, B, C, D, E;
-	public String getName() {
-	    return name();
-	}
     }
 }
