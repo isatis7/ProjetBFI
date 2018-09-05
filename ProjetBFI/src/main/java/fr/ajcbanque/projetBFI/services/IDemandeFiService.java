@@ -1,6 +1,9 @@
 package fr.ajcbanque.projetBFI.services;
 
+import java.util.List;
+
 import fr.ajcbanque.projetBFI.AppLanguage;
+import fr.ajcbanque.projetBFI.dto.DemandeFiDTO;
 import fr.ajcbanque.projetBFI.entities.DemandeFinancement;
 
 public interface IDemandeFiService {
