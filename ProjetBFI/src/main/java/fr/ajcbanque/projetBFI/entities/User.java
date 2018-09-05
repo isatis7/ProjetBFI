@@ -36,7 +36,7 @@ public class User implements Serializable {
     @NotNull(message = "{error.commons.required}")
     @Enumerated(EnumType.STRING)
     @Column(length = 10, nullable = false)
-    private Role	      role		    = Role.ROLE_USER;
+    private Role	      role;
     @Convert(converter = BooleanConverter.class)
     @Column(length = 1, nullable = false)
     public boolean	      accountNonExpired	    = true;
@@ -162,7 +162,7 @@ public class User implements Serializable {
     }
 
     public static enum Role {
-	ROLE_USER, ROLE_ADMIN;
+	ROLE_CLIENT, ROLE_PRO, ROLE_ADMIN;
 	public String getName() {
 	    return name();
 	}
