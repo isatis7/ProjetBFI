@@ -1,6 +1,7 @@
 package fr.ajcbanque.projetBFI.entities;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -47,6 +48,7 @@ public class DemandeFinancement implements Serializable {
     @NotNull(message = "{error.commons.required}")
     @JoinColumn(nullable = false)
     private TypeFinancement   typeFinancement;
+    private BigDecimal	      perfPlus;
 
     public DemandeFinancement() {
 	//
@@ -124,6 +126,14 @@ public class DemandeFinancement implements Serializable {
 	this.typeFinancement = typeFinancement;
     }
 
+    public BigDecimal getPerfPlus() {
+	return perfPlus;
+    }
+
+    public void setPerfPlus(BigDecimal perfPlus) {
+	this.perfPlus = perfPlus;
+    }
+
     @Override
     public int hashCode() {
 	final int prime = 31;
@@ -137,6 +147,8 @@ public class DemandeFinancement implements Serializable {
 	result = prime * result + ((duree == null) ? 0 : duree.hashCode());
 	result = prime * result + ((id == null) ? 0 : id.hashCode());
 	result = prime * result + ((montant == null) ? 0 : montant.hashCode());
+	result = prime * result
+		+ ((perfPlus == null) ? 0 : perfPlus.hashCode());
 	result = prime * result
 		+ ((reference == null) ? 0 : reference.hashCode());
 	result = prime * result
@@ -205,6 +217,13 @@ public class DemandeFinancement implements Serializable {
 	} else if (!montant.equals(other.montant)) {
 	    return false;
 	}
+	if (perfPlus == null) {
+	    if (other.perfPlus != null) {
+		return false;
+	    }
+	} else if (!perfPlus.equals(other.perfPlus)) {
+	    return false;
+	}
 	if (reference == null) {
 	    if (other.reference != null) {
 		return false;
@@ -228,6 +247,7 @@ public class DemandeFinancement implements Serializable {
 		+ ", dateDemande=" + dateDemande + ", reference=" + reference
 		+ ", duree=" + duree + ", dateEffective=" + dateEffective
 		+ ", montant=" + montant + ", devise=" + devise
-		+ ", typeFinancement=" + typeFinancement + "]";
+		+ ", typeFinancement=" + typeFinancement + ", perfPlus="
+		+ perfPlus + "]";
     }
 }
