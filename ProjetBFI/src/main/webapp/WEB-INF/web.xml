@@ -3,7 +3,7 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-	<display-name>La Marmite Web Application</display-name>
+	<display-name>SodiBank Web Application</display-name>
 
 	<servlet>
 		<servlet-name>dispatcher</servlet-name>
@@ -16,7 +16,7 @@
 
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>fr.formation.lamarmite.WebConfig</param-value>
+			<param-value>fr.ajcbanque.projetBFI.WebConfig</param-value>
 		</init-param>
 
 		<load-on-startup>1</load-on-startup>
