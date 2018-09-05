@@ -9,7 +9,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.ajcbanque.projetBFI.entities.DemandeFinancement;
 import fr.ajcbanque.projetBFI.services.IDemandeFiService;
@@ -26,7 +28,7 @@ public class DemandeController extends BaseController {
 
     @GetMapping("/toCreate")
     public String create(
-	    @Valid @ModelAttribute("demandeFi") DemandeFinancement demandeFi,
+	    @Valid @ModelAttribute("demandeFinancement") DemandeFinancement demandeFi,
 	    BindingResult result, Model model) {
 	if (validateAndSave(demandeFi, result)) {
 	    model.addAttribute("course", new DemandeFinancement());
@@ -37,18 +39,22 @@ public class DemandeController extends BaseController {
 
     @GetMapping("/toUpdate")
     public String toUpdate(@RequestParam("id") Long id, Model model) {
-	Menu menu = menuService.findById(id);
-	model.addAttribute("menu", menu);
+	DemandeFinancement demandeFi = demandeFiService.findById(id);
+	model.addAttribute("demandeFi", demandeFi);
 	populateModel(model);
-	return "menuUpdate";
+	return "demandeFiUpdate";
     }
 
     @PostMapping("/update")
-    public String update(@Valid @ModelAttribute("menu") Menu menu,
+    public String update(
+	    @Valid @ModelAttribute("demandeFinancement") DemandeFinancement demandeFi,
 	    BindingResult result, Model model) {
-	if (validateAndSave(menu, result)) {
+	if (validateAndSave(demandeFi, result)) {
 	    return "redirect:/home/welcome";
 	}
+	populateModel(model);
+	return "demandeFiUpdate";
+    }
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") Long id) {
