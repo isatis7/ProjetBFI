@@ -24,7 +24,6 @@ public class UserController extends BaseController {
 	this.userService = userService;
     }
 
-    @SuppressWarnings("unused")
     @GetMapping("/toCreate")
     public String toCreate(@ModelAttribute("user") User user, Model model) {
 	return "userCreate";

@@ -36,7 +36,11 @@ public class User implements Serializable {
     @NotNull(message = "{error.commons.required}")
     @Enumerated(EnumType.STRING)
     @Column(length = 20, nullable = false)
+<<<<<<< HEAD
     private Role	      role		    = Role.ROLE_USER;
+=======
+    private Role	      role;
+>>>>>>> branch 'develop' of https://github.com/isatis7/ProjetBFI.git
     @Convert(converter = BooleanConverter.class)
     @Column(length = 1, nullable = false)
     public boolean	      accountNonExpired	    = true;
@@ -162,7 +166,7 @@ public class User implements Serializable {
     }
 
     public static enum Role {
-	ROLE_USER, ROLE_ADMIN;
+	ROLE_USER_CLIENT, ROLE_USER_PRO, ROLE_ADMIN, ROLE_PO;
 	public String getName() {
 	    return name();
 	}
