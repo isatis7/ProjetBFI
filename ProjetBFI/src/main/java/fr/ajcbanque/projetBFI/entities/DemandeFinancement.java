@@ -41,11 +41,11 @@ public class DemandeFinancement implements Serializable {
     private Float	      montant;
     @ManyToOne
     @NotNull(message = "{error.commons.required}")
-    @Column(nullable = false)
+    @JoinColumn(nullable = false)
     private Devise	      devise;
     @ManyToOne
     @NotNull(message = "{error.commons.required}")
-    @Column(nullable = false)
+    @JoinColumn(nullable = false)
     private TypeFinancement   typeFinancement;
 
     public DemandeFinancement() {

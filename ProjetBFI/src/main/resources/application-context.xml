@@ -28,9 +28,9 @@
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="persistenceUnitName"
-			value="lamarmitePersistenceUnit" />
+			value="projetBFIPersistenceUnit" />
 		<property name="packagesToScan"
-			value="fr.formation.lamarmite.entities" />
+			value="fr.ajcbanque.projetBFI.entities" />
 		<property name="jpaVendorAdapter">
 			<bean
 				class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />

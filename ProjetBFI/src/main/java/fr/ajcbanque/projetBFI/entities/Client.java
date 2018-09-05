@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
@@ -30,14 +31,14 @@ public class Client implements Serializable {
     private FormeJuridique    formeJuridique;
     @ManyToOne
     @NotNull(message = "{error.commons.required}")
-    @Column(nullable = false)
+    @JoinColumn(nullable = false)
     private Pays	      pays;
     @NotNull(message = "{error.commons.required}")
     @Column(length = 10, nullable = false, unique = true)
     private Long	      numCarteBancaire;
     @ManyToOne
     @NotNull(message = "{error.commons.required}")
-    @Column(nullable = false)
+    @JoinColumn(nullable = false)
     private RatingInterne     ratingInterne;
 
     public Client() {
