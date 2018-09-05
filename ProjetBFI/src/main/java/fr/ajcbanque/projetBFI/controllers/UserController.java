@@ -1,7 +1,5 @@
 package fr.ajcbanque.projetBFI.controllers;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +11,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import fr.ajcbanque.projetBFI.dto.CivilityDTO;
 import fr.ajcbanque.projetBFI.entities.User;
 import fr.ajcbanque.projetBFI.services.IUserService;
 
@@ -30,7 +27,6 @@ public class UserController extends BaseController {
     @SuppressWarnings("unused")
     @GetMapping("/toCreate")
     public String toCreate(@ModelAttribute("user") User user, Model model) {
-	populateModel(model);
 	return "userCreate";
     }
 
@@ -41,7 +37,6 @@ public class UserController extends BaseController {
 	    model.addAttribute("user", new User());
 	    return "redirect:/security/login";
 	}
-	populateModel(model);
 	return "userCreate";
     }
 
@@ -49,7 +44,6 @@ public class UserController extends BaseController {
     public String toUpdate(Model model) {
 	User user = userService.findById(getUser().getId());
 	model.addAttribute("user", user);
-	populateModel(model);
 	return "userUpdate";
     }
 
@@ -60,7 +54,6 @@ public class UserController extends BaseController {
 	if (validateAndSave(user, result)) {
 	    return "redirect:/home/welcome";
 	}
-	populateModel(model);
 	return "userUpdate";
     }
 
@@ -74,19 +67,8 @@ public class UserController extends BaseController {
     }
 
     private void validate(User user, BindingResult result) {
-	Civility civility = user.getCivility();
-	if (Long.valueOf(0L).equals(civility.getId())) {
-	    result.rejectValue("civility.id", "error.commons.required");
-	}
 	if (!userService.validateEmail(user)) {
 	    result.rejectValue("email", "error.entities.user.duplicateEmail");
 	}
-    }
-
-    private void populateModel(Model model) {
-	List<CivilityDTO> civilities = civilityService
-		.findAllAsDTO(getAppLanguage());
-	model.addAttribute("civilities", civilities);
-	model.addAttribute("roles", User.Role.values());
     }
 }

@@ -1,22 +1,22 @@
 package fr.ajcbanque.projetBFI.controllers;
 
 import java.beans.PropertyEditorSupport;
-import java.security.Principal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
-import org.springframework.context.annotation.Role;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 
 import fr.ajcbanque.projetBFI.AppLanguage;
+import fr.ajcbanque.projetBFI.Principal;
+import fr.ajcbanque.projetBFI.entities.User;
+import fr.ajcbanque.projetBFI.entities.User.Role;
 
 public abstract class BaseController {
     protected BaseController() {

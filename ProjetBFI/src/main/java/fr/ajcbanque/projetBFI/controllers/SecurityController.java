@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("/security")
 public class SecurityController {
-    @SuppressWarnings("unused")
     @GetMapping("/login")
     public String login(
 	    @RequestParam(value = "error", required = false) Boolean error,
