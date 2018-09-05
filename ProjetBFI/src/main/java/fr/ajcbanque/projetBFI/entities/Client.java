@@ -26,8 +26,9 @@ public class Client implements Serializable {
     @NotNull(message = "{error.commons.required}")
     @Column(length = 100, nullable = false)
     private String	      nom;
+    @ManyToOne
     @NotNull(message = "{error.commons.required}")
-    @Column(nullable = false)
+    @JoinColumn(nullable = false)
     private FormeJuridique    formeJuridique;
     @ManyToOne
     @NotNull(message = "{error.commons.required}")
