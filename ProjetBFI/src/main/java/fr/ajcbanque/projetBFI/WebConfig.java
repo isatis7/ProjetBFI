@@ -18,7 +18,10 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
-@Import(value = { AppConfig.class}) // rajouter SecurityConfig.class lorsqu'on attatque loginService
+@Import(value = { AppConfig.class, SecurityConfig.class }) // rajouter
+							   // SecurityConfig.class
+							   // lorsqu'on attatque
+							   // loginService
 @EnableWebMvc
 @ComponentScan("fr.ajcbanque.projetBFI.controllers")
 public class WebConfig implements WebMvcConfigurer {
