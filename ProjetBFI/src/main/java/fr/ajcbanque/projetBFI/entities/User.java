@@ -36,11 +36,7 @@ public class User implements Serializable {
     @NotNull(message = "{error.commons.required}")
     @Enumerated(EnumType.STRING)
     @Column(length = 20, nullable = false)
-<<<<<<< HEAD
-    private Role	      role		    = Role.ROLE_USER;
-=======
     private Role	      role;
->>>>>>> branch 'develop' of https://github.com/isatis7/ProjetBFI.git
     @Convert(converter = BooleanConverter.class)
     @Column(length = 1, nullable = false)
     public boolean	      accountNonExpired	    = true;
