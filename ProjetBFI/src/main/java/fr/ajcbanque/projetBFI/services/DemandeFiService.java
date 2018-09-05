@@ -2,6 +2,7 @@ package fr.ajcbanque.projetBFI.services;
 
 import java.util.List;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import fr.ajcbanque.projetBFI.AppLanguage;
@@ -22,11 +23,13 @@ public class DemandeFiService implements IDemandeFiService {
 	return false;
     }
 
+    @PreAuthorize("hasRole('ROLE_USER_CLIENT')")
     @Override
     public void save(DemandeFinancement demandeFi) {
 	// TODO Auto-generated method stub
     }
 
+    @PreAuthorize("hasRole('ROLE_USER_CLIENT')")
     @Override
     public void deleteById(Long id) {
 	// TODO Auto-generated method stub
