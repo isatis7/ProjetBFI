@@ -34,7 +34,7 @@ public class DemandeController extends BaseController {
 	    @Valid @ModelAttribute("demandeFinancement") DemandeFinancement demandeFi,
 	    BindingResult result, Model model) {
 	if (validateAndSave(demandeFi, result)) {
-	    model.addAttribute("course", new DemandeFinancement());
+	    model.addAttribute("demandeFinancement", new DemandeFinancement());
 	}
 	populateModel(model);
 	return "demandeFiCreate";
