@@ -37,7 +37,6 @@ public class DemandeController extends BaseController {
     public String toCreate(
 	    @ModelAttribute("demandeFinancement") DemandeFinancement demandeFi,
 	    Model model) {
-	// getUser()
 	populateModel(model);
 	return "demandeFiCreate";
     }
