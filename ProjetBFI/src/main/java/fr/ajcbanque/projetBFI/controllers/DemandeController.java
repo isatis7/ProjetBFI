@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.ajcbanque.projetBFI.dto.ClientDTO;
+import fr.ajcbanque.projetBFI.dto.DemandeFiDTO;
 import fr.ajcbanque.projetBFI.entities.Client;
 import fr.ajcbanque.projetBFI.entities.DemandeFinancement;
 import fr.ajcbanque.projetBFI.entities.User;
@@ -83,7 +84,9 @@ public class DemandeController extends BaseController {
 
     @GetMapping("/histoFi")
     public String histoFi(Model model) {
-	populateModel(model);
+	List<DemandeFiDTO> financement = demandeFiService
+		.findAllAsDTO(getAppLanguage());
+	model.addAttribute("financements", financement);
 	return "histoFi";
     }
 
