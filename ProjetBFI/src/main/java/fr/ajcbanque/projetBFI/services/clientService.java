@@ -52,6 +52,6 @@ public class clientService implements IClientService {
 
     @Override
     public Long findIdClientByUser(Long userId) {
-	return clientJpaRepository.findIdByUser(userId);
+	return clientJpaRepository.findIdClientByUser(userId);
     }
 }

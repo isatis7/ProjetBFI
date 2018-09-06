@@ -43,7 +43,6 @@ public class DemandeController extends BaseController {
 	Long id = clientService.findIdClientByUser(user.getId()); // service
 	Client client = demandeFi.getClient();
 	client.setId(id);
-	// populateModel(model);
 	return "demandeFiCreate";
     }
 
@@ -51,11 +50,9 @@ public class DemandeController extends BaseController {
     public String create(
 	    @Valid @ModelAttribute("demandeFinancement") DemandeFinancement demandeFi,
 	    BindingResult result, Model model) {
-	// getUser().
 	if (validateAndSave(demandeFi, result)) {
 	    model.addAttribute("demandeFinancement", new DemandeFinancement());
 	}
-	// populateModel(model);
 	return "demandeFiCreate";
     }
 
