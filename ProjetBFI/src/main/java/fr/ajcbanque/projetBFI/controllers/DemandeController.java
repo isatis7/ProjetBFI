@@ -81,6 +81,12 @@ public class DemandeController extends BaseController {
 	return "redirect:/home/welcome";
     }
 
+    @GetMapping("/histoFi")
+    public String histoFi(Model model) {
+	populateModel(model);
+	return "histoFi";
+    }
+
     private void populateModel(Model model) {
 	List<ClientDTO> clients = clientService.findAllAsDTO(getAppLanguage());
 	model.addAttribute("clients", clients);
