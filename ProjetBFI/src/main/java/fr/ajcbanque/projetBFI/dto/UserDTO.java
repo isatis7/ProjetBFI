@@ -11,8 +11,12 @@ public class UserDTO {
     private Role   role;
     public boolean enabled;
 
+    public UserDTO() {
+	//
+    }
+
     public UserDTO(Long id, String lastname, String firstname, String email,
-	    String password, Role role, boolean enabled) {
+	    String password, Role role, Boolean enabled) {
 	setId(id);
 	setLastname(lastname);
 	setFirstname(firstname);
