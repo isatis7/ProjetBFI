@@ -1,5 +1,7 @@
 package fr.ajcbanque.projetBFI.controllers;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import fr.ajcbanque.projetBFI.dto.ClientDTO;
 import fr.ajcbanque.projetBFI.entities.DemandeFinancement;
 import fr.ajcbanque.projetBFI.services.IDemandeFiService;
 
@@ -73,7 +76,8 @@ public class DemandeController extends BaseController {
     }
 
     private void populateModel(Model model) {
-	// TODO Auto-generated method stub
+	List<ClientDTO> clients = clientService.findAllAsDTO(getAppLanguage());
+	model.addAttribute("clients", clients);
     }
 
     private boolean validateAndSave(@Valid DemandeFinancement demandeFi,
