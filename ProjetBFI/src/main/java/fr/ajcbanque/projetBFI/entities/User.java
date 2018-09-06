@@ -1,7 +1,6 @@
 package fr.ajcbanque.projetBFI.entities;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Convert;
@@ -49,6 +48,8 @@ public class User implements Serializable {
     @Convert(converter = BooleanConverter.class)
     @Column(length = 1, nullable = false)
     public boolean	      enabled		    = true;
+    private Client	      client;
+    private Collaborateur     collaborateur;
 
     public User() {
 	//
@@ -134,31 +135,133 @@ public class User implements Serializable {
 	enabled = flag;
     }
 
+    public Client getClient() {
+	return client;
+    }
+
+    public void setClient(Client client) {
+	this.client = client;
+    }
+
+    public Collaborateur getCollaborateur() {
+	return collaborateur;
+    }
+
+    public void setCollaborateur(Collaborateur collaborateur) {
+	this.collaborateur = collaborateur;
+    }
+
+    @Override
+    public int hashCode() {
+	final int prime = 31;
+	int result = 1;
+	result = prime * result + (accountNonExpired ? 1231 : 1237);
+	result = prime * result + (accountNonLocked ? 1231 : 1237);
+	result = prime * result + ((client == null) ? 0 : client.hashCode());
+	result = prime * result
+		+ ((collaborateur == null) ? 0 : collaborateur.hashCode());
+	result = prime * result + (credentialsNonExpired ? 1231 : 1237);
+	result = prime * result + ((email == null) ? 0 : email.hashCode());
+	result = prime * result + (enabled ? 1231 : 1237);
+	result = prime * result
+		+ ((firstname == null) ? 0 : firstname.hashCode());
+	result = prime * result + ((id == null) ? 0 : id.hashCode());
+	result = prime * result
+		+ ((lastname == null) ? 0 : lastname.hashCode());
+	result = prime * result
+		+ ((password == null) ? 0 : password.hashCode());
+	result = prime * result + ((role == null) ? 0 : role.hashCode());
+	return result;
+    }
+
     @Override
     public boolean equals(Object obj) {
 	if (this == obj) {
 	    return true;
 	}
-	if (!(obj instanceof User)) {
+	if (obj == null) {
+	    return false;
+	}
+	if (getClass() != obj.getClass()) {
 	    return false;
 	}
 	User other = (User) obj;
-	return email.equals(other.email);
-    }
-
-    @Override
-    public int hashCode() {
-	return Objects.hash(email);
+	if (accountNonExpired != other.accountNonExpired) {
+	    return false;
+	}
+	if (accountNonLocked != other.accountNonLocked) {
+	    return false;
+	}
+	if (client == null) {
+	    if (other.client != null) {
+		return false;
+	    }
+	} else if (!client.equals(other.client)) {
+	    return false;
+	}
+	if (collaborateur == null) {
+	    if (other.collaborateur != null) {
+		return false;
+	    }
+	} else if (!collaborateur.equals(other.collaborateur)) {
+	    return false;
+	}
+	if (credentialsNonExpired != other.credentialsNonExpired) {
+	    return false;
+	}
+	if (email == null) {
+	    if (other.email != null) {
+		return false;
+	    }
+	} else if (!email.equals(other.email)) {
+	    return false;
+	}
+	if (enabled != other.enabled) {
+	    return false;
+	}
+	if (firstname == null) {
+	    if (other.firstname != null) {
+		return false;
+	    }
+	} else if (!firstname.equals(other.firstname)) {
+	    return false;
+	}
+	if (id == null) {
+	    if (other.id != null) {
+		return false;
+	    }
+	} else if (!id.equals(other.id)) {
+	    return false;
+	}
+	if (lastname == null) {
+	    if (other.lastname != null) {
+		return false;
+	    }
+	} else if (!lastname.equals(other.lastname)) {
+	    return false;
+	}
+	if (password == null) {
+	    if (other.password != null) {
+		return false;
+	    }
+	} else if (!password.equals(other.password)) {
+	    return false;
+	}
+	if (role != other.role) {
+	    return false;
+	}
+	return true;
     }
 
     @Override
     public String toString() {
-	return "{id=" + id + ", lastname=" + lastname + ", firstname="
-		+ firstname + ", email=" + email + ", password=[SECRET], role="
-		+ role + ", accountNonExpired=" + accountNonExpired
+	return "User [id=" + id + ", lastname=" + lastname + ", firstname="
+		+ firstname + ", email=" + email + ", password=" + password
+		+ ", role=" + role + ", accountNonExpired=" + accountNonExpired
 		+ ", accountNonLocked=" + accountNonLocked
 		+ ", credentialsNonExpired=" + credentialsNonExpired
-		+ ", enabled=" + enabled + "}";
+		+ ", enabled=" + enabled + ", client=" + client
+		+ ", collaborateur=" + collaborateur + "]";
     }
 
     public static enum Role {
