@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.ajcbanque.projetBFI.dto.ClientDTO;
+import fr.ajcbanque.projetBFI.entities.Client;
 import fr.ajcbanque.projetBFI.entities.DemandeFinancement;
+import fr.ajcbanque.projetBFI.entities.User;
 import fr.ajcbanque.projetBFI.services.IClientService;
 import fr.ajcbanque.projetBFI.services.IDemandeFiService;
 
@@ -37,6 +39,10 @@ public class DemandeController extends BaseController {
     public String toCreate(
 	    @ModelAttribute("demandeFinancement") DemandeFinancement demandeFi,
 	    Model model) {
+	User user = getUser();
+	Long id = clientService.findIdClientByUser(user.getId()); // service
+	Client client = demandeFi.getClient();
+	client.setId(id);
 	// populateModel(model);
 	return "demandeFiCreate";
     }
