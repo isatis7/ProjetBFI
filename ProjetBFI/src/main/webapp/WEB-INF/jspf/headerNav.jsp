@@ -5,10 +5,16 @@
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="sec"%>
 <span id="TOP"></span>
+
+<li class="navbar-brand" ><img src=<c:url value="/static/image/Sodibank.png" /> alt="<spring:message
+					code="commons.nav.brand" /> " style="width:50%"></li>
+					<li class="navbar-brand" ><img src=<c:url value="/static/image/slogan1.png" /> alt="<spring:message
+					code="commons.nav.brand" /> " style="width:50%"></li>
+					
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+<div class="container-fluid">
 	<ul class="nav navbar-nav">
-		<li class="navbar-brand" ><img src="webapp/static/image/Sodibank.png" alt="<spring:message
-					code="commons.nav.brand" />"></li>
+		
 		
 		<sec:authorize access="hasAnyRole('ROLE_USER_CLIENT', 'ROLE_PO')">
 			<li class="nav-item"><a class="nav-link"
@@ -57,7 +63,7 @@
 						code="commons.nav.gestionportefeuille" /></a></li>
 			
 		</sec:authorize>
-		
+		</ul>
 	
 		<sec:authorize access="isAuthenticated()">
 		<ul class="nav navbar-nav navbar-right">
@@ -74,5 +80,6 @@
 							code="commons.nav.settings.logout" /></a>
 				</div></li></ul>
 		</sec:authorize>
-	</ul>
+	
+	</div>
 </nav>
