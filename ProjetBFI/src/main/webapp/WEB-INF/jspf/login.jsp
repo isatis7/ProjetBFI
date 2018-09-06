@@ -11,6 +11,10 @@
 <body>
 	<c:import url="headerNav.jsp" />
 	<div class="container-fluid">
+	<div class="row">
+	<div class="col-sm-2"></div>
+	<div class="col-sm-8">
+	
 		<section>
 			<h1 class="text-primary">
 				<spring:message code="login.title" />
@@ -29,6 +33,8 @@
 				<span><a href="<c:url value="/users/toCreate" />"><spring:message code="login.users.toCreate" /></a></span>
 			</form>
 		</section>
+	</div>
+	</div>
 	</div>
 	<c:import url="footerNav.jsp" />
 </body>
