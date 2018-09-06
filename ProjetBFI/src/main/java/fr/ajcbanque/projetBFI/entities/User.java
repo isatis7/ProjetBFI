@@ -52,7 +52,7 @@ public class User implements Serializable {
     @Convert(converter = BooleanConverter.class)
     @Column(length = 1, nullable = false)
     private boolean	      enabled		    = true;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Client>      porteFeuilleClients;
     @OneToOne
     private Client	      client;

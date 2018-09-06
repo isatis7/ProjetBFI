@@ -49,4 +49,9 @@ public class clientService implements IClientService {
     public List<ClientDTO> findAllAsDTO(AppLanguage lang) {
 	return clientRepository.findAllAsDTO(lang);
     }
+
+    @Override
+    public Long findIdClientByUser(Long userId) {
+	return clientJpaRepository.findIdByUser(userId);
+    }
 }

@@ -16,9 +16,9 @@ public class UserRepository extends BaseRepository implements IUserRepository {
     @Override
     public List<UserDTO> findAllAsDTO(AppLanguage lang) {
 	StringBuilder queryBuilder = new StringBuilder(
-		"select new fr.ajcbanque.ProjetBFI.dto.UserDTO(");
+		"select new fr.ajcbanque.projetBFI.dto.UserDTO(");
 	queryBuilder.append(
-		"u.id, u.email, u.enabled, u.firstname, u.lastname, u.password, u.role)");
+		"u.id, u.lastname, u.firstname, u.email, u.password,  u.role, u.enabled)");
 	queryBuilder.append(" from User u");
 	queryBuilder.append(" order by u.id");
 	Query query = em.createQuery(queryBuilder.toString());

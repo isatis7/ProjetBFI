@@ -12,6 +12,7 @@
 <body>
 	<c:import url="headerNav.jsp" />
 	<div class="container-fluid">
+<<<<<<< HEAD
 		<section>
 			<h1 class="text-primary"><spring:message code="entities.user.manage" /></h1>
 						<div class="table-responsive">
@@ -41,6 +42,15 @@
 			</div>
 			</section>
 			</div>
+=======
+	<div class="row">
+	<div class="col-sm-2"></div>
+	<div class="col-sm-8">
+	<h1>Hello PO/Admin !!</h1>
+	</div>
+	</div>
+	</div>
+>>>>>>> branch 'develop' of https://github.com/isatis7/ProjetBFI.git
 	<c:import url="footerNav.jsp" />
 </body>
 </html>

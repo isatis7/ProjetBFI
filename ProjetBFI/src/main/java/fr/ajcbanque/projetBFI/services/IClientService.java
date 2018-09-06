@@ -14,4 +14,6 @@ public interface IClientService {
     public boolean validateCode(Client client);
 
     public List<ClientDTO> findAllAsDTO(AppLanguage lang);
+
+    public Long findIdClientByUser(Long userClientId);
 }

@@ -1,16 +1,18 @@
 package fr.ajcbanque.projetBFI.dto;
 
+import fr.ajcbanque.projetBFI.entities.User.Role;
+
 public class UserDTO {
     private Long   id;
     private String lastname;
     private String firstname;
     private String email;
     private String password;
-    private String role;
+    private Role   role;
     public boolean enabled;
 
     public UserDTO(Long id, String lastname, String firstname, String email,
-	    String password, String role, boolean enabled) {
+	    String password, Role role, boolean enabled) {
 	setId(id);
 	setLastname(lastname);
 	setFirstname(firstname);
@@ -60,11 +62,11 @@ public class UserDTO {
 	this.password = password;
     }
 
-    public String getRole() {
+    public Role getRole() {
 	return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Role role) {
 	this.role = role;
     }
 
