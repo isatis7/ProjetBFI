@@ -18,10 +18,9 @@ public class UserRepository extends BaseRepository implements IUserRepository {
 	StringBuilder queryBuilder = new StringBuilder(
 		"select new fr.ajcbanque.ProjetBFI.dto.UserDTO(");
 	queryBuilder.append(
-		"u.id, u.nom, d.dateDemande, d.reference, d.duree, d.dateEffective, d.montant, e.codeIso, t.nom)");
-	queryBuilder.append(
-		" from DemandeFinancement d join Client c join Devise e join TypeFinancement t");
-	queryBuilder.append(" order by d.dateDemande");
+		"u.id, u.email, u.enabled, u.firstname, u.lastname, u.password, u.role)");
+	queryBuilder.append(" from User u");
+	queryBuilder.append(" order by u.id");
 	Query query = em.createQuery(queryBuilder.toString());
 	return query.getResultList();
     }
