@@ -7,12 +7,10 @@
 <span id="TOP"></span>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 	<ul class="nav navbar-nav">
-		<span class="navbar-brand text-info"><spring:message
-				code="commons.nav.brand" /></span>
-		<li class="nav-item"><a class="nav-link"
-			href="<c:url value="/home/welcome" />"><spring:message
-					code="commons.nav.home" /></a></li>
-		<sec:authorize access="isAuthenticated()">
+		<li class="navbar-brand" ><img src="static/image/Sodibank.png" alt="<spring:message
+					code="commons.nav.brand" />"></li>
+		
+		<sec:authorize access="hasRole('ROLE_USER_CLIENT')">
 			<li class="nav-item"><a class="nav-link"
 				href="<c:url value="/demandeFi" />"><spring:message
 						code="commons.nav.demandeFi" /></a></li>
