@@ -23,9 +23,7 @@
 			<li class="nav-item"><a class="nav-link"
 				href="<c:url value="/contactCon" />"><spring:message
 						code="commons.nav.contactCon" /></a></li>
-						<li class="nav-item"><a class="nav-link"
-				href="<c:url value="/logout" />"><spring:message
-						code="commons.nav.logout" /></a></li>
+						
 		</sec:authorize>
 		
 		<sec:authorize access="hasAnyRole('ROLE_PO', 'ROLE_ADMIN')">
