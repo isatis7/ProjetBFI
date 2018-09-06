@@ -17,16 +17,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.ajcbanque.projetBFI.dto.ClientDTO;
 import fr.ajcbanque.projetBFI.entities.DemandeFinancement;
+import fr.ajcbanque.projetBFI.services.IClientService;
 import fr.ajcbanque.projetBFI.services.IDemandeFiService;
 
 @Controller
 @RequestMapping("/demandefi")
 public class DemandeController extends BaseController {
     private final IDemandeFiService demandeFiService;
+    private final IClientService    clientService;
 
     @Autowired
-    protected DemandeController(IDemandeFiService demandeFiService) {
+    protected DemandeController(IDemandeFiService demandeFiService,
+	    IClientService clientService) {
 	this.demandeFiService = demandeFiService;
+	this.clientService = clientService;
     }
 
     @GetMapping("/toCreate")
