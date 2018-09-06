@@ -1,15 +1,19 @@
 package fr.ajcbanque.projetBFI.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
@@ -38,17 +42,21 @@ public class User implements Serializable {
     private Role	      role;
     @Convert(converter = BooleanConverter.class)
     @Column(length = 1, nullable = false)
-    public boolean	      accountNonExpired	    = true;
+    private boolean	      accountNonExpired	    = true;
     @Convert(converter = BooleanConverter.class)
     @Column(length = 1, nullable = false)
-    public boolean	      accountNonLocked	    = true;
+    private boolean	      accountNonLocked	    = true;
     @Convert(converter = BooleanConverter.class)
     @Column(length = 1, nullable = false)
-    public boolean	      credentialsNonExpired = true;
+    private boolean	      credentialsNonExpired = true;
     @Convert(converter = BooleanConverter.class)
     @Column(length = 1, nullable = false)
-    public boolean	      enabled		    = true;
+    private boolean	      enabled		    = true;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Client>      porteFeuilleClients;
+    @OneToOne
     private Client	      client;
+    @OneToOne
     private Collaborateur     collaborateur;
 
     public User() {
@@ -151,6 +159,26 @@ public class User implements Serializable {
 	this.collaborateur = collaborateur;
     }
 
+    public List<Client> getPorteFeuilleClients() {
+	return porteFeuilleClients;
+    }
+
+    public void setPorteFeuilleClients(List<Client> porteFeuilleClients) {
+	this.porteFeuilleClients = porteFeuilleClients;
+    }
+
+    @Override
+    public String toString() {
+	return "User [id=" + id + ", lastname=" + lastname + ", firstname="
+		+ firstname + ", email=" + email + ", password=" + password
+		+ ", role=" + role + ", accountNonExpired=" + accountNonExpired
+		+ ", accountNonLocked=" + accountNonLocked
+		+ ", credentialsNonExpired=" + credentialsNonExpired
+		+ ", enabled=" + enabled + ", porteFeuilleClients="
+		+ porteFeuilleClients + ", client=" + client
+		+ ", collaborateur=" + collaborateur + "]";
+    }
+
     @Override
     public int hashCode() {
 	final int prime = 31;
@@ -170,6 +198,8 @@ public class User implements Serializable {
 		+ ((lastname == null) ? 0 : lastname.hashCode());
 	result = prime * result
 		+ ((password == null) ? 0 : password.hashCode());
+	result = prime * result + ((porteFeuilleClients == null) ? 0
+		: porteFeuilleClients.hashCode());
 	result = prime * result + ((role == null) ? 0 : role.hashCode());
 	return result;
     }
@@ -247,21 +277,17 @@ public class User implements Serializable {
 	} else if (!password.equals(other.password)) {
 	    return false;
 	}
+	if (porteFeuilleClients == null) {
+	    if (other.porteFeuilleClients != null) {
+		return false;
+	    }
+	} else if (!porteFeuilleClients.equals(other.porteFeuilleClients)) {
+	    return false;
+	}
 	if (role != other.role) {
 	    return false;
 	}
 	return true;
-    }
-
-    @Override
-    public String toString() {
-	return "User [id=" + id + ", lastname=" + lastname + ", firstname="
-		+ firstname + ", email=" + email + ", password=" + password
-		+ ", role=" + role + ", accountNonExpired=" + accountNonExpired
-		+ ", accountNonLocked=" + accountNonLocked
-		+ ", credentialsNonExpired=" + credentialsNonExpired
-		+ ", enabled=" + enabled + ", client=" + client
-		+ ", collaborateur=" + collaborateur + "]";
     }
 
     public static enum Role {
