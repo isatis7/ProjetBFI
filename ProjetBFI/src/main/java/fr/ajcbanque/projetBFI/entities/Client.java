@@ -36,7 +36,7 @@ public class Client implements Serializable {
     private Pays	      pays;
     @NotNull(message = "{error.commons.required}")
     @Column(length = 10, nullable = false, unique = true)
-    private Long	      numCarteBancaire;
+    private Long	      numCompteBancaire;
     @ManyToOne
     @NotNull(message = "{error.commons.required}")
     @JoinColumn(nullable = false)
@@ -86,12 +86,12 @@ public class Client implements Serializable {
 	this.pays = pays;
     }
 
-    public Long getNumCarteBancaire() {
-	return numCarteBancaire;
+    public Long getNumCompteBancaire() {
+	return numCompteBancaire;
     }
 
-    public void setNumCarteBancaire(Long numCarteBancaire) {
-	this.numCarteBancaire = numCarteBancaire;
+    public void setNumCompteBancaire(Long numCompteBancaire) {
+	this.numCompteBancaire = numCompteBancaire;
     }
 
     public RatingInterne getRatingInterne() {
@@ -111,8 +111,8 @@ public class Client implements Serializable {
 		+ ((formeJuridique == null) ? 0 : formeJuridique.hashCode());
 	result = prime * result + ((id == null) ? 0 : id.hashCode());
 	result = prime * result + ((nom == null) ? 0 : nom.hashCode());
-	result = prime * result + ((numCarteBancaire == null) ? 0
-		: numCarteBancaire.hashCode());
+	result = prime * result + ((numCompteBancaire == null) ? 0
+		: numCompteBancaire.hashCode());
 	result = prime * result + ((pays == null) ? 0 : pays.hashCode());
 	result = prime * result
 		+ ((ratingInterne == null) ? 0 : ratingInterne.hashCode());
@@ -159,11 +159,11 @@ public class Client implements Serializable {
 	} else if (!nom.equals(other.nom)) {
 	    return false;
 	}
-	if (numCarteBancaire == null) {
-	    if (other.numCarteBancaire != null) {
+	if (numCompteBancaire == null) {
+	    if (other.numCompteBancaire != null) {
 		return false;
 	    }
-	} else if (!numCarteBancaire.equals(other.numCarteBancaire)) {
+	} else if (!numCompteBancaire.equals(other.numCompteBancaire)) {
 	    return false;
 	}
 	if (pays == null) {
@@ -187,7 +187,7 @@ public class Client implements Serializable {
     public String toString() {
 	return "Client [id=" + id + ", code=" + code + ", nom=" + nom
 		+ ", formeJuridique=" + formeJuridique + ", pays=" + pays
-		+ ", numCarteBancaire=" + numCarteBancaire + ", ratingInterne="
-		+ ratingInterne + "]";
+		+ ", numCompteBancaire=" + numCompteBancaire
+		+ ", ratingInterne=" + ratingInterne + "]";
     }
 }

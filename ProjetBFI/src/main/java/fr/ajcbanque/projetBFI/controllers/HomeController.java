@@ -35,7 +35,7 @@ public class HomeController extends BaseController {
 	    return "redirect:/home/toListUser";
 	}
 	if (role.isClient()) {
-	    return "redirect:/home/toCreateDemande";
+	    return "redirect:/demandefi/toCreate";
 	}
 	if (role.isPro()) {
 	    return "redirect:/home/toListDemande";
@@ -46,7 +46,7 @@ public class HomeController extends BaseController {
     @PreAuthorize("hasRole('ROLE_USER_CLIENT')")
     @GetMapping("/toCreateDemande")
     public String toCreateDemande() {
-	return "demandeCreate";
+	return "demandeFiCreate";
     }
 
     @PreAuthorize("hasRole('ROLE_USER_PRO')")

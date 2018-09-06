@@ -26,13 +26,20 @@ public class DemandeController extends BaseController {
 	this.demandeFiService = demandeFiService;
     }
 
-    /*
-     * Méthode de recupération et et de renvoie vers la page concerné
-     */
     @GetMapping("/toCreate")
+    public String toCreate(
+	    @ModelAttribute("demandeFinancement") DemandeFinancement demandeFi,
+	    Model model) {
+	getUser()
+	populateModel(model);
+	return "demandeFiCreate";
+    }
+
+    @GetMapping("/create")
     public String create(
 	    @Valid @ModelAttribute("demandeFinancement") DemandeFinancement demandeFi,
 	    BindingResult result, Model model) {
+	getUser().
 	if (validateAndSave(demandeFi, result)) {
 	    model.addAttribute("demandeFinancement", new DemandeFinancement());
 	}

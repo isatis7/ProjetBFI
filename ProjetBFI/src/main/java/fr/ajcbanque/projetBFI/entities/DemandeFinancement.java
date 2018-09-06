@@ -48,7 +48,10 @@ public class DemandeFinancement implements Serializable {
     @NotNull(message = "{error.commons.required}")
     @JoinColumn(nullable = false)
     private TypeFinancement   typeFinancement;
+    @NotNull
+    @Column(nullable = false)
     private BigDecimal	      perfPlus;
+    private boolean	      validation;
 
     public DemandeFinancement() {
 	//
@@ -132,6 +135,14 @@ public class DemandeFinancement implements Serializable {
 
     public void setPerfPlus(BigDecimal perfPlus) {
 	this.perfPlus = perfPlus;
+    }
+
+    public boolean isValidation() {
+	return validation;
+    }
+
+    public void setValidation(boolean validation) {
+	this.validation = validation;
     }
 
     @Override
@@ -248,6 +259,6 @@ public class DemandeFinancement implements Serializable {
 		+ ", duree=" + duree + ", dateEffective=" + dateEffective
 		+ ", montant=" + montant + ", devise=" + devise
 		+ ", typeFinancement=" + typeFinancement + ", perfPlus="
-		+ perfPlus + "]";
+		+ perfPlus + ", validation=" + validation + "]";
     }
 }

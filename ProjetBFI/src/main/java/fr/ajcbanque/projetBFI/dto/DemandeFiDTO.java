@@ -1,19 +1,24 @@
 package fr.ajcbanque.projetBFI.dto;
 
+import java.math.BigDecimal;
+
 public class DemandeFiDTO {
-    private Long   id;
-    private String client;
-    private String dateDemande;
-    private String reference;
-    private Float  duree;
-    private String dateEffective;
-    private Float  montant;
-    private String devise;
-    private String typeFinancement;
+    private Long       id;
+    private String     client;
+    private String     dateDemande;
+    private String     reference;
+    private Float      duree;
+    private String     dateEffective;
+    private Float      montant;
+    private String     devise;
+    private String     typeFinancement;
+    private BigDecimal perfPlus;
+    private boolean    validation;
 
     public DemandeFiDTO(Long id, String client, String dateDemande,
 	    String reference, Float duree, String dateEffective, Float montant,
-	    String devise, String typeFinancement) {
+	    String devise, String typeFinancement, BigDecimal perfPlus,
+	    boolean validation) {
 	setId(id);
 	setClient(client);
 	setDateDemande(dateDemande);
@@ -23,6 +28,8 @@ public class DemandeFiDTO {
 	setMontant(montant);
 	setDevise(devise);
 	setTypeFinancement(typeFinancement);
+	setPerfPlus(perfPlus);
+	setValidation(validation);
     }
 
     public Long getId() {
@@ -95,5 +102,21 @@ public class DemandeFiDTO {
 
     public void setTypeFinancement(String typeFinancement) {
 	this.typeFinancement = typeFinancement;
+    }
+
+    public BigDecimal getPerfPlus() {
+	return perfPlus;
+    }
+
+    public void setPerfPlus(BigDecimal perfPlus) {
+	this.perfPlus = perfPlus;
+    }
+
+    public boolean isValidation() {
+	return validation;
+    }
+
+    public void setValidation(boolean validation) {
+	this.validation = validation;
     }
 }

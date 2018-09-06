@@ -16,13 +16,8 @@
 			<h1 class="text-primary"><spring:message code="entities.demande.create.title" /></h1>
 			<h3 class="text-primary"><spring:message code="entities.demande.create.hello" />${client.nom}, nous sommes le<fmt:formatDate value="${today}" pattern="dd/MM/yyyy"/></h3>
 			<form:form action="create" method="POST" modelAttribute="demandeFinancement">
+			<form:hidden path="client.id"/>
 				<div class="form-row">
-					<div class="form-group col">
-						<input type="hidden" name="client.id" value="${client.id}" />
-						<form:hidden path="client"/>
-						<form:hidden path="role"/>
-					</div>
-					
 					<div class="form-group col">
 						<form:label path="reference"><spring:message code="entities.demandeFinancement.reference" /><span class="text-danger"><spring:message code="commons.symbols.required" /></span></form:label>
 						<div class="input-group">
