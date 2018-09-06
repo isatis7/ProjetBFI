@@ -30,7 +30,7 @@ public class DemandeController extends BaseController {
     public String toCreate(
 	    @ModelAttribute("demandeFinancement") DemandeFinancement demandeFi,
 	    Model model) {
-	getUser()
+	// getUser()
 	populateModel(model);
 	return "demandeFiCreate";
     }
@@ -39,7 +39,7 @@ public class DemandeController extends BaseController {
     public String create(
 	    @Valid @ModelAttribute("demandeFinancement") DemandeFinancement demandeFi,
 	    BindingResult result, Model model) {
-	getUser().
+	// getUser().
 	if (validateAndSave(demandeFi, result)) {
 	    model.addAttribute("demandeFinancement", new DemandeFinancement());
 	}
