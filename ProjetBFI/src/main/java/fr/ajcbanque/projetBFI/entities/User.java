@@ -50,9 +50,6 @@ public class User implements Serializable {
     public boolean	      enabled		    = true;
     private Client	      client;
     private Collaborateur     collaborateur;
-    @Convert(converter = BooleanConverter.class)
-    @Column(length = 1, nullable = false)
-    private boolean	      verrouillageCompte    = false;
 
     public User() {
 	//
