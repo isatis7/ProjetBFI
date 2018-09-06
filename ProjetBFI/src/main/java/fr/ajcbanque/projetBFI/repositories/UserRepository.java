@@ -11,7 +11,7 @@ import fr.ajcbanque.projetBFI.dto.UserDTO;
 
 @Repository
 public class UserRepository extends BaseRepository implements IUserRepository {
-    // méthode à revoir après modif User.java
+    // méthode à revoir après modif User.java (requête à revoir)
     @SuppressWarnings("unchecked")
     @Override
     public List<UserDTO> findAllAsDTO(AppLanguage lang) {
