@@ -3,6 +3,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 <!DOCTYPE html>
 <html lang="${pageContext.response.locale.language}">
 <head>
@@ -17,7 +18,7 @@
 	<div class="col-sm-8">
 		<section>
 			<h1 class="text-primary"><spring:message code="entities.demande.create.title" /></h1>
-			<h3 class="text-primary"><spring:message code="entities.demande.create.hello" />${client.nom}, nous sommes le<fmt:formatDate value="${today}" pattern="dd/MM/yyyy"/></h3>
+			<h3 class="text-primary"><spring:message code="entities.demande.create.hello" /><sec:authentication property="principal.user.firstname"/><spring:message code="entities.demande.create.helloSuite" /><fmt:formatDate value="${today}" pattern="dd/MM/yyyy"/></h3>
 			<form:form action="create" method="POST" modelAttribute="demandeFinancement">
 			<form:hidden path="client.id"/>
 				<div class="form-row ">

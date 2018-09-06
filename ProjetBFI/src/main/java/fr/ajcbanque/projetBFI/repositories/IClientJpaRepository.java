@@ -11,6 +11,6 @@ public interface IClientJpaRepository extends JpaRepository<Client, Long> {
 
     public boolean existsByCodeIgnoreCaseAndIdNot(String code, Long id);
 
-    @Query("select id from Client where u.id := userId")
-    public Long findIdByUser(@Param("userId") Long userId);
+    @Query("select u.client.id from User u where u.id = :userId")
+    public Long findIdClientByUser(@Param("userId") Long userId);
 }

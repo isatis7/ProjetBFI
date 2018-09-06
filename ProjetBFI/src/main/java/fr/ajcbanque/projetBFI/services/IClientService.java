@@ -15,5 +15,5 @@ public interface IClientService {
 
     public List<ClientDTO> findAllAsDTO(AppLanguage lang);
 
-    public Long findIdClientByUser(Long userClientId);
+    public Long findIdClientByUser(Long userId);
 }

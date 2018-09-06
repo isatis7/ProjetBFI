@@ -24,7 +24,7 @@ public class DemandeFinancement implements Serializable {
     private Long	      id;
     @ManyToOne
     @JoinColumn(nullable = false)
-    private Client	      client;
+    private Client	      client	       = new Client();
     @NotNull(message = "{error.commons.required}")
     @Column(nullable = false)
     private LocalDate	      dateDemande;
