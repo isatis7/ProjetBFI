@@ -37,7 +37,7 @@ public class DemandeController extends BaseController {
     public String toCreate(
 	    @ModelAttribute("demandeFinancement") DemandeFinancement demandeFi,
 	    Model model) {
-	populateModel(model);
+	// populateModel(model);
 	return "demandeFiCreate";
     }
 
@@ -49,7 +49,7 @@ public class DemandeController extends BaseController {
 	if (validateAndSave(demandeFi, result)) {
 	    model.addAttribute("demandeFinancement", new DemandeFinancement());
 	}
-	populateModel(model);
+	// populateModel(model);
 	return "demandeFiCreate";
     }
 
@@ -57,7 +57,7 @@ public class DemandeController extends BaseController {
     public String toUpdate(@RequestParam("id") Long id, Model model) {
 	DemandeFinancement demandeFi = demandeFiService.findById(id);
 	model.addAttribute("demandeFi", demandeFi);
-	populateModel(model);
+	// populateModel(model);
 	return "demandeFiUpdate";
     }
 
