@@ -8,6 +8,8 @@
 
 <li class="navbar-brand" ><img src=<c:url value="/static/image/Sodibank.png" /> alt="<spring:message
 					code="commons.nav.brand" /> " style="width:50%"></li>
+					<li class="navbar-brand" ><img src=<c:url value="/static/image/slogan1.png" /> alt="<spring:message
+					code="commons.nav.brand" /> " style="width:50%"></li>
 					
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 <div class="container-fluid">
