@@ -36,7 +36,7 @@ public class Client implements Serializable {
     private Pays	      pays;
     @NotNull(message = "{error.commons.required}")
     @Column(length = 10, nullable = false, unique = true)
-    private Long	      numCompteBancaire;
+    private String	      numCompteBancaire;
     @ManyToOne
     @NotNull(message = "{error.commons.required}")
     @JoinColumn(nullable = false)
@@ -86,11 +86,11 @@ public class Client implements Serializable {
 	this.pays = pays;
     }
 
-    public Long getNumCompteBancaire() {
+    public String getNumCompteBancaire() {
 	return numCompteBancaire;
     }
 
-    public void setNumCompteBancaire(Long numCompteBancaire) {
+    public void setNumCompteBancaire(String numCompteBancaire) {
 	this.numCompteBancaire = numCompteBancaire;
     }
 
