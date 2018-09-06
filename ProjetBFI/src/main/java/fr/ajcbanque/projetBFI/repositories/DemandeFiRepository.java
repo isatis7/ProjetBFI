@@ -4,9 +4,12 @@ import java.util.List;
 
 import javax.persistence.Query;
 
+import org.springframework.stereotype.Repository;
+
 import fr.ajcbanque.projetBFI.AppLanguage;
 import fr.ajcbanque.projetBFI.dto.DemandeFiDTO;
 
+@Repository
 public class DemandeFiRepository extends BaseRepository
 				 implements IDemandeFiRepository {
     @SuppressWarnings("unchecked")
