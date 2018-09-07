@@ -44,13 +44,13 @@ public class DemandeFiService implements IDemandeFiService {
 		.existsByReferenceIgnoreCaseAndIdNot(reference, id);
     }
 
-    @PreAuthorize("hasRole('ROLE_USER_CLIENT')")
+    @PreAuthorize("hasAnyRole('ROLE_USER_CLIENT', 'ROLE_ADMIN')")
     @Override
     public void save(DemandeFinancement demandeFi) {
 	demandeFiJpaRepository.save(demandeFi);
     }
 
-    @PreAuthorize("hasRole('ROLE_USER_CLIENT')")
+    @PreAuthorize("hasAnyRole('ROLE_USER_CLIENT', 'ROLE_ADMIN')")
     @Override
     public void deleteById(Long id) {
 	demandeFiJpaRepository.deleteById(id);

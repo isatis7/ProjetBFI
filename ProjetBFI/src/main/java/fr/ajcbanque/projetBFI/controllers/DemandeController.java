@@ -37,7 +37,7 @@ public class DemandeController extends BaseController {
 	this.clientService = clientService;
     }
 
-    @PreAuthorize("hasRole('ROLE_USER_CLIENT'), hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_USER_CLIENT', 'ROLE_ADMIN', 'ROLE_PO')")
     @GetMapping("/toCreate")
     public String toCreate(
 	    @ModelAttribute("demandeFinancement") DemandeFinancement demandeFi,
@@ -49,19 +49,18 @@ public class DemandeController extends BaseController {
 	return "demandeFiCreate";
     }
 
-    @PreAuthorize("hasRole('ROLE_USER_CLIENT'), hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_USER_CLIENT', 'ROLE_ADMIN')")
     @PostMapping("/create")
     public String create(
-	    @Valid @ModelAttribute("demandeFinancement") DemandeFinancement demandeFi,
+	    @ModelAttribute("demandeFinancement") DemandeFinancement demandeFi,
 	    BindingResult result, Model model) {
 	if (validateAndSave(demandeFi, result)) {
 	    model.addAttribute("demandeFinancement", new DemandeFinancement());
 	}
-	populateModel(model);
 	return "demandeFiCreate";
     }
 
-    @PreAuthorize("hasRole('ROLE_USER_CLIENT'), hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_USER_CLIENT', 'ROLE_ADMIN')")
     @GetMapping("/toUpdate")
     public String toUpdate(@RequestParam("id") Long id, Model model) {
 	DemandeFinancement demandeFi = demandeFiService.findById(id);
@@ -70,7 +69,7 @@ public class DemandeController extends BaseController {
 	return "demandeFiUpdate";
     }
 
-    @PreAuthorize("hasRole('ROLE_USER_CLIENT'), hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_USER_CLIENT', 'ROLE_ADMIN')")
     @PostMapping("/update")
     public String update(
 	    @Valid @ModelAttribute("demandeFinancement") DemandeFinancement demandeFi,
@@ -82,13 +81,13 @@ public class DemandeController extends BaseController {
 	return "demandeFiUpdate";
     }
 
-    @PreAuthorize("hasRole('ROLE_USER_CLIENT'), hasRole('ROLE_ADMIN')")
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") Long id) {
 	demandeFiService.deleteById(id);
 	return "redirect:/home/welcome";
     }
 
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/histoFi")
     public String histoFi(Model model) {
 	List<DemandeFiDTO> financement = demandeFiService

@@ -48,8 +48,8 @@ public class DemandeFinancement implements Serializable {
     @NotNull(message = "{error.commons.required}")
     @JoinColumn(nullable = false)
     private TypeFinancement   typeFinancement;
-    @NotNull
-    @Column(nullable = false)
+    // @NotNull(message = "{error.commons.required}")
+    // @Column(nullable = false)
     private BigDecimal	      perfPlus;
     private boolean	      validation;
 
