@@ -55,7 +55,7 @@ public class HomeController extends BaseController {
 	List<DemandeFiDTO> demandes = demandeFiService
 		.findAllAsDTO(getAppLanguage());
 	model.addAttribute("demandes", demandes);
-	return "demandeList";
+	return "redirect:/demandefi/histoFi";
     }
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_PO')")

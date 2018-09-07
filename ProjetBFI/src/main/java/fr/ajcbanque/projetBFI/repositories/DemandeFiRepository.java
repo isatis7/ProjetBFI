@@ -31,9 +31,8 @@ public class DemandeFiRepository extends BaseRepository
 	StringBuilder queryBuilder = new StringBuilder(
 		"select new fr.ajcbanque.projetBFI.dto.DemandeFiDTO(");
 	queryBuilder.append(
-		"d.id, c.nom, d.dateDemande, d.reference, d.duree, d.dateEffective, d.montant, e.codeIso, t.nom, d.perfPlus, d.validation)");
-	queryBuilder.append(
-		" from DemandeFinancement d join Client c join Devise e join TypeFinancement t");
+		"d.id, d.client.nom, d.dateDemande, d.reference, d.duree, d.dateEffective, d.montant, d.devise.codeIso, d.typeFinancement.nom, d.perfPlus, d.validation)");
+	queryBuilder.append(" from DemandeFinancement d");
 	queryBuilder.append(" order by d.dateDemande");
 	Query query = em.createQuery(queryBuilder.toString());
 	return query.getResultList();
