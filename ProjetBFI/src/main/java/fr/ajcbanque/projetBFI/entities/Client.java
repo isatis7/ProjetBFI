@@ -190,4 +190,8 @@ public class Client implements Serializable {
 		+ ", numCompteBancaire=" + numCompteBancaire
 		+ ", ratingInterne=" + ratingInterne + "]";
     }
+
+    public Client findById(int i) {
+	return null;
+    }
 }
