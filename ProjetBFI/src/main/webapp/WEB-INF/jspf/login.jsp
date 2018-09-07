@@ -30,7 +30,7 @@
 					<input type="password" name="password" value="" maxlength="12" autocomplete="off" class="form-control">
 				</div>
 				<button type="submit" class="btn btn-primary mb-3"><spring:message code="login.submit" /></button>
-				<span><a href="<c:url value="/users/toCreate" />"><spring:message code="login.users.toCreate" /></a></span>
+				
 			</form>
 		</section>
 	</div>

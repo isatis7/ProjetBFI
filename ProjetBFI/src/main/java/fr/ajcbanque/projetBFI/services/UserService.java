@@ -21,17 +21,14 @@ public class UserService implements IUserService {
     @Autowired
     protected UserService(IUserJpaRepository userJpaRepository,
 	    IUserRepository userRepository) {
-	this.userJpaRepository = userJpaRepository;
 	this.userRepository = userRepository;
+	this.userJpaRepository = userJpaRepository;
     }
 
     @Override
     public void save(User user) {
 	encodePassword(user);
 	userJpaRepository.save(user);
-    }
-
-    public void deleteById(Long id) {
     }
 
     private static void encodePassword(User user) {
@@ -60,5 +57,12 @@ public class UserService implements IUserService {
     @Override
     public List<UserDTO> findAllAsDTO(AppLanguage lang) {
 	return userRepository.findAllAsDTO(lang);
+    }
+
+    @Override
+    public void disable(Long id) {
+	User user = findById(id);
+	user.setEnabled(false);
+	userJpaRepository.save(user);
     }
 }

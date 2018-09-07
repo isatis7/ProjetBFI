@@ -14,4 +14,6 @@ public interface IUserService {
     public void save(User user);
 
     public List<UserDTO> findAllAsDTO(AppLanguage appLanguage);
+
+    public void disable(Long id);
 }
