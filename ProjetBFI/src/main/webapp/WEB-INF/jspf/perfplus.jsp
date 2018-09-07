@@ -19,8 +19,8 @@
 			<h1 class="text-primary">
 				<spring:message code="perfplus.title" />
 			</h1>
-			<form method="POST" action="<c:url value="/perfplus" />">
-				
+			<form method="POST" action="<c:url value="/perfplus/create" />">
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 				<div class="form-group">
 					<label for="paramA"><spring:message code="perfplus.paramA" /></label>
 					<input type="text" name="paramA" value="" maxlength="5" class="form-control">

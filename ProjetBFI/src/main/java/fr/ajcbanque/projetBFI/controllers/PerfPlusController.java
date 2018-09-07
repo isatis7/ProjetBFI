@@ -16,7 +16,6 @@ import fr.ajcbanque.projetBFI.entities.Parametres;
 import fr.ajcbanque.projetBFI.services.IParametresService;
 
 @Controller
-@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_PO')")
 @RequestMapping("/perfplus")
 public class PerfPlusController {
     private final IParametresService parametresService;
@@ -26,17 +25,19 @@ public class PerfPlusController {
 	this.parametresService = parametresService;
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_PO')")
     @GetMapping("/toCreate")
     public String toCreate(@ModelAttribute("parametres") Parametres parametres,
 	    Model model) {
 	return "perfplus";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_PO')")
     @PostMapping("/create")
     public String create(
 	    @Valid @ModelAttribute("parametres") Parametres parametres,
 	    BindingResult result, Model model) {
 	parametresService.save(parametres);
-	return "perfplus/toCreate";
+	return "perfplus";
     }
 }
