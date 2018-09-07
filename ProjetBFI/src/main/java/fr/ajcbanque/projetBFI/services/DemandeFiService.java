@@ -13,23 +13,27 @@ import fr.ajcbanque.projetBFI.dto.DemandeFiDTO;
 import fr.ajcbanque.projetBFI.entities.Client;
 import fr.ajcbanque.projetBFI.entities.DemandeFinancement;
 import fr.ajcbanque.projetBFI.entities.Parametres;
-import fr.ajcbanque.projetBFI.repositories.IClientRepository;
+import fr.ajcbanque.projetBFI.repositories.IClientJpaRepository;
 import fr.ajcbanque.projetBFI.repositories.IDemandeFiJpaRepository;
 import fr.ajcbanque.projetBFI.repositories.IDemandeFiRepository;
+import fr.ajcbanque.projetBFI.repositories.IParametresJpaRepository;
 
 @Service
 public class DemandeFiService implements IDemandeFiService {
-    private final IDemandeFiRepository	  demandeFiRepository;
-    private final IDemandeFiJpaRepository demandeFiJpaRepository;
-    private final IClientRepository	  clientRepository;
+    private final IDemandeFiRepository	   demandeFiRepository;
+    private final IDemandeFiJpaRepository  demandeFiJpaRepository;
+    private final IClientJpaRepository	   clientJpaRepository;
+    private final IParametresJpaRepository parametresJpaRepository;
 
     @Autowired
     protected DemandeFiService(IDemandeFiRepository demandeFiRepository,
 	    IDemandeFiJpaRepository demandeFiJpaRepository,
-	    IClientRepository clientRepository) {
+	    IClientJpaRepository clientJpaRepository,
+	    IParametresJpaRepository parametresJpaRepository) {
 	this.demandeFiRepository = demandeFiRepository;
 	this.demandeFiJpaRepository = demandeFiJpaRepository;
-	this.clientRepository = clientRepository;
+	this.clientJpaRepository = clientJpaRepository;
+	this.parametresJpaRepository = parametresJpaRepository;
     }
 
     @Override
@@ -55,8 +59,9 @@ public class DemandeFiService implements IDemandeFiService {
     @Override
     public void save(DemandeFinancement demandeFi) {
 	Long clientId = demandeFi.getClient().getId();
-	Client client = clientJpaRepository.findById(clientId); // service.f
-	Parametres parametres = null;
+	Optional<Client> optional = clientJpaRepository.findById(clientId);
+	Client client = optional.get();
+	Parametres parametres = parametresJpaRepository.;
 	calculPerfPlus(demandeFi, parametres, client);
 	demandeFiJpaRepository.save(demandeFi);
     }
