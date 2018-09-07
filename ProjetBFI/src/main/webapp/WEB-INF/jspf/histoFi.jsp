@@ -23,8 +23,8 @@
 							<tr>
 								<th><spring:message code="entities.demandeFinancement.duree" /></th>
 								<th><spring:message code="entities.demandeFinancement.montant" /></th>
-								<th><spring:message code="entities.demandeFinancement.dateEffective" /></th>
 								<th><spring:message code="entities.demandeFinancement.devise" /></th>
+								<th><spring:message code="entities.demandeFinancement.dateEffective" /></th>
 								<th><spring:message code="entities.demandeFinancement.typeFinancement" /></th>
 								<th><spring:message code="entities.demandeFinancement.acceptee" /></th>
 <%-- 								<th><spring:message code="commons.symbols.nbsp" /></th> --%>
@@ -61,8 +61,8 @@
 								<th><spring:message code="entities.demandeFinancement.reference" /></th>
 								<th><spring:message code="entities.demandeFinancement.duree" /></th>
 								<th><spring:message code="entities.demandeFinancement.montant" /></th>
-								<th><spring:message code="entities.demandeFinancement.dateEffective" /></th>
 								<th><spring:message code="entities.demandeFinancement.devise" /></th>
+								<th><spring:message code="entities.demandeFinancement.dateEffective" /></th>
 								<th><spring:message code="entities.demandeFinancement.typeFinancement" /></th>
 								<th><spring:message code="entities.demandeFinancement.perfPlus" /></th>
 								<th><spring:message code="entities.demandeFinancement.validation" /></th>
@@ -78,8 +78,8 @@
 								<td>${financement.reference}</td>
 								<td>${financement.duree}</td>
 								<td>${financement.montant}</td>
-								<td>${financement.dateEffective}</td>
 								<td>${financement.devise}</td>
+								<td>${financement.dateEffective}</td>
 								<td>${financement.typeFinancement}</td>
 								<td>${financement.perfPlus}</td>
 								<td>${financement.validation}</td>
