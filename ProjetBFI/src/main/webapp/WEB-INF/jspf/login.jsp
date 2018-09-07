@@ -19,6 +19,9 @@
 			<h1 class="text-primary">
 				<spring:message code="login.title" />
 			</h1>
+							<c:if test="${param.error != null}">
+    					<div class="error"><span class="text-danger"><spring:message code="login.failed" /></span>
+				</div></c:if>
 			<form method="POST" action="<c:url value="/login" />">
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 				<div class="form-group">
