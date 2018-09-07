@@ -1,6 +1,5 @@
 package fr.ajcbanque.projetBFI.controllers;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -56,7 +55,7 @@ public class DemandeController extends BaseController {
 	    Model model) {
 	populateModel(model);
 	User user = getUser();
-	Long id = clientService.findIdClientByUser(user.getId()); // service
+	Long id = clientService.findIdClientByUser(user.getId());
 	Client client = demandeFi.getClient();
 	client.setId(id);
 	return "demandeFiCreate";
@@ -67,8 +66,11 @@ public class DemandeController extends BaseController {
     public String create(
 	    @ModelAttribute("demandeFinancement") DemandeFinancement demandeFi,
 	    BindingResult result, Model model) {
+	User user = getUser();
+	Long id = clientService.findIdClientByUser(user.getId());
+	Client client = demandeFi.getClient();
+	client.setId(id);
 	demandeFi.setDateDemande(LocalDate.now());
-	demandeFi.setPerfPlus(BigDecimal.valueOf(0.52));
 	populateModel(model);
 	if (validateAndSave(demandeFi, result)) {
 	    model.addAttribute("demandeFinancement", new DemandeFinancement());

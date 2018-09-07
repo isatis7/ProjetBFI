@@ -1,5 +1,6 @@
 package fr.ajcbanque.projetBFI.services;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,7 +10,10 @@ import org.springframework.stereotype.Service;
 
 import fr.ajcbanque.projetBFI.AppLanguage;
 import fr.ajcbanque.projetBFI.dto.DemandeFiDTO;
+import fr.ajcbanque.projetBFI.entities.Client;
 import fr.ajcbanque.projetBFI.entities.DemandeFinancement;
+import fr.ajcbanque.projetBFI.entities.Parametres;
+import fr.ajcbanque.projetBFI.repositories.IClientRepository;
 import fr.ajcbanque.projetBFI.repositories.IDemandeFiJpaRepository;
 import fr.ajcbanque.projetBFI.repositories.IDemandeFiRepository;
 
@@ -17,12 +21,15 @@ import fr.ajcbanque.projetBFI.repositories.IDemandeFiRepository;
 public class DemandeFiService implements IDemandeFiService {
     private final IDemandeFiRepository	  demandeFiRepository;
     private final IDemandeFiJpaRepository demandeFiJpaRepository;
+    private final IClientRepository	  clientRepository;
 
     @Autowired
     protected DemandeFiService(IDemandeFiRepository demandeFiRepository,
-	    IDemandeFiJpaRepository demandeFiJpaRepository) {
+	    IDemandeFiJpaRepository demandeFiJpaRepository,
+	    IClientRepository clientRepository) {
 	this.demandeFiRepository = demandeFiRepository;
 	this.demandeFiJpaRepository = demandeFiJpaRepository;
+	this.clientRepository = clientRepository;
     }
 
     @Override
@@ -47,6 +54,10 @@ public class DemandeFiService implements IDemandeFiService {
     @PreAuthorize("hasAnyRole('ROLE_USER_CLIENT', 'ROLE_ADMIN')")
     @Override
     public void save(DemandeFinancement demandeFi) {
+	Long clientId = demandeFi.getClient().getId();
+	Client client = clientJpaRepository.findById(clientId); // service.f
+	Parametres parametres = null;
+	calculPerfPlus(demandeFi, parametres, client);
 	demandeFiJpaRepository.save(demandeFi);
     }
 
@@ -69,5 +80,26 @@ public class DemandeFiService implements IDemandeFiService {
     @Override
     public List<DemandeFiDTO> findAllAsDTO(AppLanguage lang) {
 	return demandeFiRepository.findAllAsClientDTO(lang);
+    }
+
+    private BigDecimal calculPerfPlus(DemandeFinancement demandeFi,
+	    Parametres param, Client client) {
+	BigDecimal mf = demandeFi.getMontant();
+	BigDecimal df = demandeFi.getDuree();
+	BigDecimal crp = client.getPays().getRatingInterne()
+		.getCoefficientRisque();
+	BigDecimal crc = client.getRatingInterne().getCoefficientRisque();
+	BigDecimal perf = BigDecimal.valueOf(0);
+	BigDecimal a = param.getParamA();
+	BigDecimal b = param.getParamB();
+	BigDecimal t = BigDecimal.valueOf(10000);
+	BigDecimal u = mf.divide(df);// (mf/df)
+	BigDecimal v = mf.multiply(crc);// (mf*crc)
+	BigDecimal w = mf.multiply(crp);// (mf*crp)
+	BigDecimal x = b.divide(a);// (b/a)
+	BigDecimal y = mf.multiply(x);// (mf*(x))
+	BigDecimal z = u.add(v.add(w).add(y));// (u)+(v)+(w)+(y)
+	perf = z.divide(t, 3);// 10000
+	return perf;
     }
 }
