@@ -23,9 +23,7 @@
 			<li class="nav-item"><a class="nav-link"
 				href="<c:url value="/demandefi/histoFi" />"><spring:message
 						code="commons.nav.histoFi" /></a></li>
-			<li class="nav-item"><a class="nav-link"
-				href="#" /><spring:message
-						code="commons.nav.enCoursFi" /></a></li>
+			<li class="nav-item"><a class="nav-link" href="#" ><spring:message code="commons.nav.enCoursFi" /></a></li>
 			
 						
 		</sec:authorize>
@@ -50,9 +48,11 @@
 						code="commons.nav.listeutil" /></a></li>
 			<li class="nav-item"><a class="nav-link"
 
-				href="<c:url value="/perfplus/tocreate" />"><spring:message
+
+				href="<c:url value="/perfplus/toCreate" />"><spring:message
+
 						code="commons.nav.perfplus" /></a></li>
-		
+
 						
 		</sec:authorize>
 		
@@ -100,19 +100,15 @@
 				<li class="nav-item"><a class="nav-link"
 				href="<c:url value="/home/toListUser" />"><spring:message
 						code="commons.nav.listeutil" /></a></li>
+
 			<li class="nav-item"><a class="nav-link"
 
-				href="<c:url value="/perfplus/tocreate" />"><spring:message
+				href="<c:url value="/perfplus/toCreate" />"><spring:message
+
 						code="commons.nav.perfplus" /></a></li>
 
-			
 		</sec:authorize>
-		
-		
 		</ul>
-		
-		
-	
 		<sec:authorize access="isAuthenticated()">
 		<ul class="nav navbar-nav navbar-left">
 		
