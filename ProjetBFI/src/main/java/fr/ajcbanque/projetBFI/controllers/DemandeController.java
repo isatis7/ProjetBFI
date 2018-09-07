@@ -1,6 +1,5 @@
 package fr.ajcbanque.projetBFI.controllers;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -24,7 +23,6 @@ import fr.ajcbanque.projetBFI.dto.DeviseDTO;
 import fr.ajcbanque.projetBFI.dto.TypeFinancementDTO;
 import fr.ajcbanque.projetBFI.entities.Client;
 import fr.ajcbanque.projetBFI.entities.DemandeFinancement;
-import fr.ajcbanque.projetBFI.entities.Parametres;
 import fr.ajcbanque.projetBFI.entities.User;
 import fr.ajcbanque.projetBFI.entities.User.Role;
 import fr.ajcbanque.projetBFI.services.IClientService;
@@ -73,7 +71,6 @@ public class DemandeController extends BaseController {
 	Client client = demandeFi.getClient();
 	client.setId(id);
 	demandeFi.setDateDemande(LocalDate.now());
-	demandeFi.setPerfPlus(BigDecimal.valueOf(0.52));
 	populateModel(model);
 	if (validateAndSave(demandeFi, result)) {
 	    model.addAttribute("demandeFinancement", new DemandeFinancement());
@@ -155,23 +152,5 @@ public class DemandeController extends BaseController {
 	    result.rejectValue("reference",
 		    "error.entities.demandeFi.duplicateReference");
 	}
-    }
-
-    private BigDecimal calculPerfPlus (DemandeFinancement demandeFi, Parametres param) {
-	BigDecimal mf = demandeFi.getMontant();
-	BigDecimal df = demandeFi.getDuree();
-	BigDecimal crp = demandeFi.getClient().getPays().getRatingInterne().getCoefficientRisque();
-	BigDecimal crc = demandeFi.getClient().getRatingInterne().getCoefficientRisque();
-	BigDecimal perf = BigDecimal.valueOf(0);
-	BigDecimal a = param.getParamA();
-	BigDecimal b = param.getParamB();
-	BigDecimal u =;//(mf/df)
-	BigDecimal v =;//(mf*crc)
-	BigDecimal w =;//(mf*crp)
-	BigDecimal x =;//(b/a)
-	BigDecimal y =;//(mf*(x))
-	BigDecimal z =;//(u)+(v)+(w)+(y)
-	perf = z.divide( 10000, 3);//10000
-	return perf;
     }
 }
