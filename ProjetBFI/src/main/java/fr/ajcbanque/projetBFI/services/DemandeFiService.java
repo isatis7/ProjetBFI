@@ -61,8 +61,8 @@ public class DemandeFiService implements IDemandeFiService {
 	Long clientId = demandeFi.getClient().getId();
 	Optional<Client> optional = clientJpaRepository.findById(clientId);
 	Client client = optional.get();
-	Parametres parametres = parametresJpaRepository.;
-	calculPerfPlus(demandeFi, parametres, client);
+	List<Parametres> listeParam = parametresJpaRepository.findAll();
+	BigDecimal perfPlus = calculPerfPlus(demandeFi, param, client);
 	demandeFiJpaRepository.save(demandeFi);
     }
 

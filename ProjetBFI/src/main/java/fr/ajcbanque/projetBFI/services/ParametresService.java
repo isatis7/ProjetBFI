@@ -21,6 +21,7 @@ public class ParametresService implements IParametresService {
 
     @Override
     public void save(Parametres parametres) {
-	parametresJpaRepository.save(parametres);
+	parametresJpaRepository.
+	.save(parametres);
     }
 }
