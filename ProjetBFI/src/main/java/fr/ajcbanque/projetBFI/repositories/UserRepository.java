@@ -11,17 +11,15 @@ import fr.ajcbanque.projetBFI.dto.UserDTO;
 
 @Repository
 public class UserRepository extends BaseRepository implements IUserRepository {
-    // méthode à revoir après modif User.java (requête à revoir)
     @SuppressWarnings("unchecked")
     @Override
     public List<UserDTO> findAllAsDTO(AppLanguage lang) {
 	StringBuilder queryBuilder = new StringBuilder(
-		"select new fr.ajcbanque.ProjetBFI.dto.UserDTO(");
+		"select new fr.ajcbanque.projetBFI.dto.UserDTO(");
 	queryBuilder.append(
-		"u.id, u.nom, d.dateDemande, d.reference, d.duree, d.dateEffective, d.montant, e.codeIso, t.nom)");
-	queryBuilder.append(
-		" from DemandeFinancement d join Client c join Devise e join TypeFinancement t");
-	queryBuilder.append(" order by d.dateDemande");
+		"u.id, u.lastname, u.firstname, u.email, u.password,  u.role, u.enabled)");
+	queryBuilder.append(" from User u where u.enabled='T'");
+	queryBuilder.append(" order by u.id");
 	Query query = em.createQuery(queryBuilder.toString());
 	return query.getResultList();
     }
