@@ -1,5 +1,7 @@
 package fr.ajcbanque.projetBFI.controllers;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -18,23 +20,32 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.ajcbanque.projetBFI.dto.ClientDTO;
 import fr.ajcbanque.projetBFI.dto.DemandeFiDTO;
+import fr.ajcbanque.projetBFI.dto.DeviseDTO;
+import fr.ajcbanque.projetBFI.dto.TypeFinancementDTO;
 import fr.ajcbanque.projetBFI.entities.Client;
 import fr.ajcbanque.projetBFI.entities.DemandeFinancement;
 import fr.ajcbanque.projetBFI.entities.User;
 import fr.ajcbanque.projetBFI.services.IClientService;
 import fr.ajcbanque.projetBFI.services.IDemandeFiService;
+import fr.ajcbanque.projetBFI.services.IDeviseService;
+import fr.ajcbanque.projetBFI.services.ITypeFinancementService;
 
 @Controller
 @RequestMapping("/demandefi")
 public class DemandeController extends BaseController {
-    private final IDemandeFiService demandeFiService;
-    private final IClientService    clientService;
+    private final IDemandeFiService	  demandeFiService;
+    private final IClientService	  clientService;
+    private final IDeviseService	  deviseService;
+    private final ITypeFinancementService typeFinancementService;
 
     @Autowired
     protected DemandeController(IDemandeFiService demandeFiService,
-	    IClientService clientService) {
+	    IClientService clientService, IDeviseService deviseService,
+	    ITypeFinancementService typeFinancementService) {
 	this.demandeFiService = demandeFiService;
 	this.clientService = clientService;
+	this.deviseService = deviseService;
+	this.typeFinancementService = typeFinancementService;
     }
 
     @PreAuthorize("hasAnyRole('ROLE_USER_CLIENT', 'ROLE_ADMIN', 'ROLE_PO')")
@@ -42,6 +53,7 @@ public class DemandeController extends BaseController {
     public String toCreate(
 	    @ModelAttribute("demandeFinancement") DemandeFinancement demandeFi,
 	    Model model) {
+	populateModel(model);
 	User user = getUser();
 	Long id = clientService.findIdClientByUser(user.getId()); // service
 	Client client = demandeFi.getClient();
@@ -54,6 +66,9 @@ public class DemandeController extends BaseController {
     public String create(
 	    @ModelAttribute("demandeFinancement") DemandeFinancement demandeFi,
 	    BindingResult result, Model model) {
+	demandeFi.setDateDemande(LocalDate.now());
+	demandeFi.setPerfPlus(BigDecimal.valueOf(0.52));
+	populateModel(model);
 	if (validateAndSave(demandeFi, result)) {
 	    model.addAttribute("demandeFinancement", new DemandeFinancement());
 	}
@@ -65,6 +80,7 @@ public class DemandeController extends BaseController {
     public String toUpdate(@RequestParam("id") Long id, Model model) {
 	DemandeFinancement demandeFi = demandeFiService.findById(id);
 	model.addAttribute("demandeFi", demandeFi);
+	populateClientModel(model);
 	populateModel(model);
 	return "demandeFiUpdate";
     }
@@ -77,6 +93,7 @@ public class DemandeController extends BaseController {
 	if (validateAndSave(demandeFi, result)) {
 	    return "redirect:/home/welcome";
 	}
+	populateClientModel(model);
 	populateModel(model);
 	return "demandeFiUpdate";
     }
@@ -96,9 +113,17 @@ public class DemandeController extends BaseController {
 	return "histoFi";
     }
 
-    private void populateModel(Model model) {
+    private void populateClientModel(Model model) {
 	List<ClientDTO> clients = clientService.findAllAsDTO(getAppLanguage());
 	model.addAttribute("clients", clients);
+    }
+
+    private void populateModel(Model model) {
+	List<DeviseDTO> devises = deviseService.findAllAsDTO(getAppLanguage());
+	model.addAttribute("devises", devises);
+	List<TypeFinancementDTO> types = typeFinancementService
+		.findAllAsDTO(getAppLanguage());
+	model.addAttribute("types", types);
     }
 
     private boolean validateAndSave(@Valid DemandeFinancement demandeFi,
