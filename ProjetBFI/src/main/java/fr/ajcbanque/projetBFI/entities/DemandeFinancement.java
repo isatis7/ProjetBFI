@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -25,10 +26,9 @@ public class DemandeFinancement implements Serializable {
     @ManyToOne
     @JoinColumn(nullable = false)
     private Client	      client	       = new Client();
-    @NotNull(message = "{error.commons.required}")
     @Column(nullable = false)
     private LocalDate	      dateDemande;
-    @NotNull(message = "{error.commons.required}")
+    @NotBlank(message = "{error.commons.required}")
     @Column(length = 255, nullable = false, unique = true)
     private String	      reference;
     @NotNull(message = "{error.commons.required}")
@@ -48,7 +48,6 @@ public class DemandeFinancement implements Serializable {
     @NotNull(message = "{error.commons.required}")
     @JoinColumn(nullable = false)
     private TypeFinancement   typeFinancement;
-    // @NotNull(message = "{error.commons.required}")
     // @Column(nullable = false)
     private BigDecimal	      perfPlus;
     private boolean	      validation;

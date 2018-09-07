@@ -62,10 +62,10 @@ public class UserController extends BaseController {
 	return "userUpdate";
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN', 'ROLE_PO')")
-    @GetMapping("/delete/{id}")
-    public String delete(@PathVariable("id") Long id) {
-	// UserService.deleteById(id); à implémenter
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_PO')")
+    @GetMapping("/disable/{id}")
+    public String disable(@PathVariable("id") Long id) {
+	userService.disable(id);
 	return "redirect:/home/welcome";
     }
 

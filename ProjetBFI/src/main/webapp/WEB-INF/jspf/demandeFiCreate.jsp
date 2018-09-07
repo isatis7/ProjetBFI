@@ -60,38 +60,35 @@
 						<form:errors element="div" path="dateEffective" cssClass="invalid-feedback" />
 					</div>
 				</div>
-				
-				<div class="row">
-	<div class="col-sm-1"></div>
-	<div class="col-sm-6">
-				
-				<div class="form-row">
-					<div class="form-group col">
-						
-						<div class="input-group">
-						
-							<div class="input-group-prepend"></div>
-							<form:label path="devise"><spring:message code="entities.demandeFinancement.devise" /><span class="text-danger"><spring:message code="commons.symbols.required" /></span></form:label>
-							<form:radiobutton path="devise" cssClass="form-control" cssErrorClass="form-control is-invalid" value="EUR" label="EUR" />
-							<form:radiobutton path="devise" cssClass="form-control" cssErrorClass="form-control is-invalid" value="USD" label="USD" />
-							<form:errors element="div" path="devise" cssClass="invalid-feedback" />
-						</div>
+			<div class="row">
+				<div class="col-sm-1"></div>
+				<div class="col-sm-6">
+					<div class="form-row">
+						<div class="form-group col">
+							<div class="input-group">
+								<form:label path="devise.id"><spring:message code="entities.demandeFinancement.devise" /><span class="text-danger"><spring:message code="commons.symbols.required" /></span></form:label>
+								<form:select path="devise.id" cssClass="form-control" cssErrorClass="form-control is-invalid">
+									<form:option value="0"><spring:message code="commons.forms.select" /></form:option>
+									<form:options items="${devises}" itemValue="id" itemLabel="codeIso" />
+								</form:select>
+								<form:errors element="div" path="devise.id" cssClass="invalid-feedback" />
+							</div>
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="form-group col">
-						
 						<div class="input-group">
-							<div class="input-group-prepend"></div>
-							<form:label path="typeFinancement"><spring:message code="entities.demandeFinancement.typeFinancement" /><span class="text-danger"><spring:message code="commons.symbols.required" /></span></form:label>
-							<form:radiobutton path="typeFinancement" cssClass="form-control" cssErrorClass="form-control is-invalid" value="simple" /><spring:message code="entities.demandeFinancement.typeFinancement.simple" />
-							<form:radiobutton path="typeFinancement" cssClass="form-control" cssErrorClass="form-control is-invalid" value="revolving" /><spring:message code="entities.demandeFinancement.typeFinancement.revolving" />
-							<form:radiobutton path="typeFinancement" cssClass="form-control" cssErrorClass="form-control is-invalid" value="syndique" /><spring:message code="entities.demandeFinancement.typeFinancement.syndique" />
-							<form:errors element="div" path="typeFinancement" cssClass="invalid-feedback" />
+							<form:label path="typeFinancement.id"><spring:message code="entities.demandeFinancement.typeFinancement" /><span class="text-danger"><spring:message code="commons.symbols.required" /></span></form:label>
+							<form:select path="typeFinancement.id" cssClass="form-control" cssErrorClass="form-control is-invalid">
+								<form:option value="0"><spring:message code="commons.forms.select" /></form:option>
+								<form:options items="${types}" itemValue="id" itemLabel="nom" />
+							</form:select>
+							<form:errors element="div" path="typeFinancement.id" cssClass="invalid-feedback" />
 						</div>
 					</div>
 				</div>
-				</div></div>
+				</div>
+			</div>
 				<button type="reset" class="btn btn-primary mb-3"><spring:message code="commons.forms.reset" /></button>
 				<form:button class="btn btn-primary mb-3"><spring:message code="commons.forms.save" /></form:button>
 			</form:form>

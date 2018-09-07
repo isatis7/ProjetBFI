@@ -3,6 +3,8 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="sec"%>
 <!DOCTYPE html>
 <html lang="${pageContext.response.locale.language}">
 <head>
@@ -33,7 +35,16 @@
 								<td>${user.firstname}</td>
 								<td>${user.lastname}</td>
 								<td>${user.role}</td>
-								<td><a href=""><spring:message code="entities.users.list.delete" /></a></td>
+								
+								<td><c:if test="${user.role != 'ROLE_ADMIN' }">
+								<sec:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_PO')">
+								<a href="<c:url value="/users/disable/${user.id}"/>"><spring:message code="entities.users.list.delete" /></a>
+								</sec:authorize>
+								
+								
+							</c:if></td>
+								
+							
 							</tr>
 						</c:forEach>
 					</tbody>

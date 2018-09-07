@@ -1,24 +1,29 @@
 package fr.ajcbanque.projetBFI.dto;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 public class DemandeFiDTO {
     private Long       id;
     private String     client;
-    private String     dateDemande;
+    private LocalDate  dateDemande;
     private String     reference;
     private Float      duree;
-    private String     dateEffective;
+    private LocalDate  dateEffective;
     private Float      montant;
     private String     devise;
     private String     typeFinancement;
     private BigDecimal perfPlus;
     private boolean    validation;
 
-    public DemandeFiDTO(Long id, String client, String dateDemande,
-	    String reference, Float duree, String dateEffective, Float montant,
-	    String devise, String typeFinancement, BigDecimal perfPlus,
-	    boolean validation) {
+    public DemandeFiDTO() {
+	//
+    }
+
+    public DemandeFiDTO(Long id, String client, LocalDate dateDemande,
+	    String reference, Float duree, LocalDate dateEffective,
+	    Float montant, String devise, String typeFinancement,
+	    BigDecimal perfPlus, boolean validation) {
 	setId(id);
 	setClient(client);
 	setDateDemande(dateDemande);
@@ -30,6 +35,20 @@ public class DemandeFiDTO {
 	setTypeFinancement(typeFinancement);
 	setPerfPlus(perfPlus);
 	setValidation(validation);
+    }
+
+    public DemandeFiDTO(Long id, String client, LocalDate dateDemande,
+	    String reference, Float duree, LocalDate dateEffective,
+	    Float montant, String codeIso, String typeFinancement) {
+	setId(id);
+	setClient(client);
+	setDateDemande(dateDemande);
+	setReference(reference);
+	setDuree(duree);
+	setDateEffective(dateEffective);
+	setMontant(montant);
+	setDevise(devise);
+	setTypeFinancement(typeFinancement);
     }
 
     public Long getId() {
@@ -48,11 +67,11 @@ public class DemandeFiDTO {
 	this.client = client;
     }
 
-    public String getDateDemande() {
+    public LocalDate getDateDemande() {
 	return dateDemande;
     }
 
-    public void setDateDemande(String dateDemande) {
+    public void setDateDemande(LocalDate dateDemande) {
 	this.dateDemande = dateDemande;
     }
 
@@ -72,11 +91,11 @@ public class DemandeFiDTO {
 	this.duree = duree;
     }
 
-    public String getDateEffective() {
+    public LocalDate getDateEffective() {
 	return dateEffective;
     }
 
-    public void setDateEffective(String dateEffective) {
+    public void setDateEffective(LocalDate dateEffective) {
 	this.dateEffective = dateEffective;
     }
 
