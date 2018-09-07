@@ -13,13 +13,9 @@
 <body>
 	<c:import url="headerNav.jsp" />
 	<div class="container-fluid">
-	<div class="row">
-	<div class="col-sm-2"></div>
-	<div class="col-sm-8">
-		<section>
-		<h1 class="text-primary">
-				<spring:message code="home.client.histofi" />
-			</h1>
+	<section>
+
+		<h1 class="text-primary"><spring:message code="home.client.histofi" /></h1>
 			<div class="table-responsive">
 				<sec:authorize access="hasRole('ROLE_USER_CLIENT')">
 					<table class="table table-hover">
@@ -30,7 +26,8 @@
 								<th><spring:message code="entities.demandeFinancement.dateEffective" /></th>
 								<th><spring:message code="entities.demandeFinancement.devise" /></th>
 								<th><spring:message code="entities.demandeFinancement.typeFinancement" /></th>
-								<th><spring:message code="commons.symbols.nbsp" /></th>
+								<th><spring:message code="entities.demandeFinancement.acceptee" /></th>
+<%-- 								<th><spring:message code="commons.symbols.nbsp" /></th> --%>
 							</tr>
 						</thead>
 						<tbody>
@@ -42,12 +39,19 @@
 									<td>${financement.dateEffective}</td>
 									<td>${financement.devise}</td>
 									<td>${financement.typeFinancement}</td>
-									<td><a href="<c:url value="/demandefi/toUpdate?id=${financement.id}" />"><spring:message code="home.client.histofi.update" /></a></td>
+									<td></td>
+									
+<!-- 									Option d'implémentation de la modification des demandes non-traités -->
+<%-- 									<td><a href="<c:url value="/demandefi/toUpdate?id=${financement.id}" />"><spring:message code="home.client.histofi.update" /></a></td> --%>
 								</tr>
 							</c:forEach>
 						</tbody>
 					</table>
 				</sec:authorize>
+				
+				
+				
+				
 				<sec:authorize access="hasAnyRole('ROLE_USER_PRO', 'ROLE_ADMIN', 'ROLE_PO')">
 					<table class="table table-hover">
 						<thead class="thead-light">
@@ -86,11 +90,10 @@
 				</table>
 			</sec:authorize>	
 		</div>
-	</section>
+		</section>
 	</div>
-		<div class="col-sm-2"></div>
-	</div>
-	</div>
+	
+
 	<c:import url="footerNav.jsp" />
 </body>
 </html>
