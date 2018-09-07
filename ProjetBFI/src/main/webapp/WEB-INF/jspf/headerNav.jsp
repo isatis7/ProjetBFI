@@ -49,14 +49,10 @@
 				href="<c:url value="/home/toListUser" />"><spring:message
 						code="commons.nav.listeutil" /></a></li>
 			<li class="nav-item"><a class="nav-link"
-<<<<<<< HEAD
-				href="<c:url value="/perfplus" />"><spring:message
+
+				href="<c:url value="/perfplus/tocreate" />"><spring:message
 						code="commons.nav.perfplus" /></a></li>
-=======
-				href="<c:url value="/perfplus/toCreate" />"><spring:message
-						code="commons.nav.lperfplus" /></a></li>
->>>>>>> branch 'develop' of https://github.com/isatis7/ProjetBFI.git
-			
+		
 						
 		</sec:authorize>
 		
@@ -105,13 +101,10 @@
 				href="<c:url value="/home/toListUser" />"><spring:message
 						code="commons.nav.listeutil" /></a></li>
 			<li class="nav-item"><a class="nav-link"
-<<<<<<< HEAD
-				href="<c:url value="/perfplus" />"><spring:message
+
+				href="<c:url value="/perfplus/tocreate" />"><spring:message
 						code="commons.nav.perfplus" /></a></li>
-=======
-				href="<c:url value="/perfplus/toCreate" />"><spring:message
-						code="commons.nav.lperfplus" /></a></li>
->>>>>>> branch 'develop' of https://github.com/isatis7/ProjetBFI.git
+
 			
 		</sec:authorize>
 		
