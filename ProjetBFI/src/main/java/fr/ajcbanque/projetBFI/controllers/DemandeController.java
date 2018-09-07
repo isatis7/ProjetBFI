@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -36,6 +37,7 @@ public class DemandeController extends BaseController {
 	this.clientService = clientService;
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_USER_CLIENT', 'ROLE_ADMIN', 'ROLE_PO')")
     @GetMapping("/toCreate")
     public String toCreate(
 	    @ModelAttribute("demandeFinancement") DemandeFinancement demandeFi,
@@ -47,25 +49,27 @@ public class DemandeController extends BaseController {
 	return "demandeFiCreate";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_USER_CLIENT', 'ROLE_ADMIN')")
     @PostMapping("/create")
     public String create(
-	    @Valid @ModelAttribute("demandeFinancement") DemandeFinancement demandeFi,
+	    @ModelAttribute("demandeFinancement") DemandeFinancement demandeFi,
 	    BindingResult result, Model model) {
 	if (validateAndSave(demandeFi, result)) {
 	    model.addAttribute("demandeFinancement", new DemandeFinancement());
 	}
-	populateModel(model);
 	return "demandeFiCreate";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_USER_CLIENT', 'ROLE_ADMIN')")
     @GetMapping("/toUpdate")
     public String toUpdate(@RequestParam("id") Long id, Model model) {
 	DemandeFinancement demandeFi = demandeFiService.findById(id);
 	model.addAttribute("demandeFi", demandeFi);
-	// populateModel(model);
+	populateModel(model);
 	return "demandeFiUpdate";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_USER_CLIENT', 'ROLE_ADMIN')")
     @PostMapping("/update")
     public String update(
 	    @Valid @ModelAttribute("demandeFinancement") DemandeFinancement demandeFi,
@@ -83,6 +87,7 @@ public class DemandeController extends BaseController {
 	return "redirect:/home/welcome";
     }
 
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/histoFi")
     public String histoFi(Model model) {
 	List<DemandeFiDTO> financement = demandeFiService
@@ -98,10 +103,18 @@ public class DemandeController extends BaseController {
 
     private boolean validateAndSave(@Valid DemandeFinancement demandeFi,
 	    BindingResult result) {
+	validate(demandeFi, result);
 	if (!result.hasErrors()) {
 	    demandeFiService.save(demandeFi);
 	    return true;
 	}
 	return false;
+    }
+
+    private void validate(DemandeFinancement demandeFi, BindingResult result) {
+	if (!demandeFiService.validateReference(demandeFi)) {
+	    result.rejectValue("reference",
+		    "error.entities.demandeFi.duplicateReference");
+	}
     }
 }

@@ -11,17 +11,21 @@ import fr.ajcbanque.projetBFI.dto.ClientDTO;
 import fr.ajcbanque.projetBFI.entities.Client;
 import fr.ajcbanque.projetBFI.repositories.IClientJpaRepository;
 import fr.ajcbanque.projetBFI.repositories.IClientRepository;
+import fr.ajcbanque.projetBFI.repositories.IUserJpaRepository;
 
 @Service
 public class clientService implements IClientService {
     private final IClientRepository    clientRepository;
     private final IClientJpaRepository clientJpaRepository;
+    private final IUserJpaRepository   userJpaRepository;
 
     @Autowired
     protected clientService(IClientRepository clientRepository,
-	    IClientJpaRepository clientJpaRepository) {
+	    IClientJpaRepository clientJpaRepository,
+	    IUserJpaRepository userJpaRepository) {
 	this.clientRepository = clientRepository;
 	this.clientJpaRepository = clientJpaRepository;
+	this.userJpaRepository = userJpaRepository;
     }
 
     @Override
@@ -52,6 +56,6 @@ public class clientService implements IClientService {
 
     @Override
     public Long findIdClientByUser(Long userId) {
-	return clientJpaRepository.findIdClientByUser(userId);
+	return userJpaRepository.getIdClientByUser(userId);
     }
 }
