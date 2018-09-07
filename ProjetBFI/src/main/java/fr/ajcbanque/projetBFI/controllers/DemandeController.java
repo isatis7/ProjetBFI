@@ -25,6 +25,7 @@ import fr.ajcbanque.projetBFI.dto.TypeFinancementDTO;
 import fr.ajcbanque.projetBFI.entities.Client;
 import fr.ajcbanque.projetBFI.entities.DemandeFinancement;
 import fr.ajcbanque.projetBFI.entities.User;
+import fr.ajcbanque.projetBFI.entities.User.Role;
 import fr.ajcbanque.projetBFI.services.IClientService;
 import fr.ajcbanque.projetBFI.services.IDemandeFiService;
 import fr.ajcbanque.projetBFI.services.IDeviseService;
@@ -107,9 +108,17 @@ public class DemandeController extends BaseController {
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/histoFi")
     public String histoFi(Model model) {
-	List<DemandeFiDTO> financement = demandeFiService
-		.findAllAsClientDTO(getAppLanguage());
-	model.addAttribute("financements", financement);
+	List<DemandeFiDTO> financements;
+	User user = getUser();
+	if (user.getRole().equals(Role.ROLE_USER_CLIENT)) {
+	    financements = demandeFiService
+		    .findAllAsClientDTO(getAppLanguage());
+	    model.addAttribute("financements", financements);
+	}
+	if (user.getRole().equals(Role.ROLE_USER_PRO)) {
+	    financements = demandeFiService.findAllAsProDTO(getAppLanguage());
+	    model.addAttribute("financements", financements);
+	}
 	return "histoFi";
     }
 
