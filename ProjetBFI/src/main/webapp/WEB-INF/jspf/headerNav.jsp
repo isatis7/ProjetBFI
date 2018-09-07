@@ -48,10 +48,11 @@
 						code="commons.nav.listeutil" /></a></li>
 			<li class="nav-item"><a class="nav-link"
 
-				href="<c:url value="/perfplus" />"><spring:message
+
+				href="<c:url value="/perfplus/toCreate" />"><spring:message
+
 						code="commons.nav.perfplus" /></a></li>
 
-			
 						
 		</sec:authorize>
 		
@@ -99,9 +100,13 @@
 				<li class="nav-item"><a class="nav-link"
 				href="<c:url value="/home/toListUser" />"><spring:message
 						code="commons.nav.listeutil" /></a></li>
+
 			<li class="nav-item"><a class="nav-link"
-				href="<c:url value="/perfplus" />"><spring:message
+
+				href="<c:url value="/perfplus/toCreate" />"><spring:message
+
 						code="commons.nav.perfplus" /></a></li>
+
 		</sec:authorize>
 		</ul>
 		<sec:authorize access="isAuthenticated()">
