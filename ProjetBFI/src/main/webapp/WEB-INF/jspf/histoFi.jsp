@@ -38,9 +38,9 @@
 							<tr>
 								<td>${financement.duree}</td>
 								<td>${financement.montant}</td>
-								<td>${financement.dateeff}</td>
+								<td>${financement.dateEffective}</td>
 								<td>${financement.devise}</td>
-								<td>${financement.typefi}</td>
+								<td>${financement.typeFinancement}</td>
 								<td><a href="<c:url value="/demandefi/toUpdate?id=${financement.id}" />"><spring:message code="home.client.histofi.update" /></a></td>
 							</tr>
 						</c:forEach>

@@ -31,6 +31,9 @@ public class UserService implements IUserService {
 	userJpaRepository.save(user);
     }
 
+    public void deleteById(Long id) {
+    }
+
     private static void encodePassword(User user) {
 	String rawPassword = user.getPassword();
 	BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
