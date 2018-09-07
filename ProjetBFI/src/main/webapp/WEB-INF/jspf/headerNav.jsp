@@ -113,19 +113,17 @@
 
 			<sec:authorize access="hasRole('ROLE_ADMIN')">
 				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-					role="button" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false"> <spring:message
-							code="commons.nav.creation" />
-				</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="<c:url value="/users/toUpdate" />"><spring:message
-								code="commons.nav.creation.po" /></a> <a class="dropdown-item"
-							href="<c:url value="/logout" />"><spring:message
-								code="commons.nav.creation.banquier" /></a> <a
-							class="dropdown-item" href="<c:url value="/users/toUpdate" />"><spring:message
-								code="commons.nav.creation.client" /></a>
-					</div></li>
+				class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+				role="button" data-toggle="dropdown" aria-haspopup="true"
+				aria-expanded="false"> <spring:message
+						code="commons.nav.creation.user" />
+			</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item" href="<c:url value="/users/toCreateCollaborateur" />"><spring:message
+							code="commons.nav.creation.collaborateur" /></a>
+							<a class="dropdown-item" href="<c:url value="/users/toCreateClient" />"><spring:message
+							code="commons.nav.creation.client" /></a>
+				</div></li>
 				<li class="nav-item"><a class="nav-link"
 					href="<c:url value="/home/toListUser" />"><spring:message
 							code="commons.nav.listeutil" /></a></li>
@@ -161,19 +159,17 @@
 
 					</div></li>
 				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-					role="button" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false"> <spring:message
-							code="commons.nav.creation" />
-				</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="<c:url value="/users/toUpdate" />"><spring:message
-								code="commons.nav.creation.po" /></a> <a class="dropdown-item"
-							href="<c:url value="/logout" />"><spring:message
-								code="commons.nav.creation.banquier" /></a> <a
-							class="dropdown-item" href="<c:url value="/users/toUpdate" />"><spring:message
-								code="commons.nav.creation.client" /></a>
-					</div></li>
+				class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+				role="button" data-toggle="dropdown" aria-haspopup="true"
+				aria-expanded="false"> <spring:message
+						code="commons.nav.creation.user" />
+			</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item" href="<c:url value="/users/toCreateCollaborateur" />"><spring:message
+							code="commons.nav.creation.collaborateur" /></a>
+							<a class="dropdown-item" href="<c:url value="/users/toCreateClient" />"><spring:message
+							code="commons.nav.creation.client" /></a>
+				</div></li>
 				<li class="nav-item"><a class="nav-link"
 					href="<c:url value="/home/toListUser" />"><spring:message
 							code="commons.nav.listeutil" /></a></li>
