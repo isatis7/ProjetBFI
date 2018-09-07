@@ -46,13 +46,14 @@ public class DemandeController extends BaseController {
 	return "demandeFiCreate";
     }
 
-    @GetMapping("/create")
+    @PostMapping("/create")
     public String create(
 	    @Valid @ModelAttribute("demandeFinancement") DemandeFinancement demandeFi,
 	    BindingResult result, Model model) {
 	if (validateAndSave(demandeFi, result)) {
 	    model.addAttribute("demandeFinancement", new DemandeFinancement());
 	}
+	populateModel(model);
 	return "demandeFiCreate";
     }
 
@@ -88,7 +89,10 @@ public class DemandeController extends BaseController {
 
     private boolean validateAndSave(@Valid DemandeFinancement demandeFi,
 	    BindingResult result) {
-	// TODO Auto-generated method stub
+	if (!result.hasErrors()) {
+	    demandeFiService.save(demandeFi);
+	    return true;
+	}
 	return false;
     }
 }
