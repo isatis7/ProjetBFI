@@ -59,10 +59,14 @@ public class DemandeFiService implements IDemandeFiService {
     @Override
     public void save(DemandeFinancement demandeFi) {
 	Long clientId = demandeFi.getClient().getId();
-	Optional<Client> optional = clientJpaRepository.findById(clientId);
-	Client client = optional.get();
-	List<Parametres> listeParam = parametresJpaRepository.findAll();
+	Optional<Client> optionalClient = clientJpaRepository
+		.findById(clientId);
+	Client client = optionalClient.get();
+	Optional<Parametres> optionalParam = parametresJpaRepository
+		.findById(1L);
+	Parametres param = optionalParam.get();
 	BigDecimal perfPlus = calculPerfPlus(demandeFi, param, client);
+	demandeFi.setPerfPlus(perfPlus);
 	demandeFiJpaRepository.save(demandeFi);
     }
 

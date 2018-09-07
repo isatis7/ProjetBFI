@@ -32,13 +32,13 @@ public class HomeController extends BaseController {
     public String welcome() {
 	Role role = getRole();
 	if (role.isAdmin() || role.isPO()) {
-	    return "redirect:/home/toListUser";
+	    return "userList";
 	}
 	if (role.isClient()) {
 	    return "redirect:/demandefi/toCreate";
 	}
 	if (role.isPro()) {
-	    return "redirect:/home/toListDemande";
+	    return "redirect:/demandefi/histoFi";
 	}
 	return "welcome";
     }

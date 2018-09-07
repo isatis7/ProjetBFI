@@ -6,4 +6,5 @@ import fr.ajcbanque.projetBFI.entities.Parametres;
 
 public interface IParametresJpaRepository extends
 					  JpaRepository<Parametres, Long> {
+    //
 }
