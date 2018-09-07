@@ -16,7 +16,7 @@
 	<ul class="nav navbar-nav">
 		
 		
-		<sec:authorize access="hasAnyRole('ROLE_USER_CLIENT', 'ROLE_PO')">
+		<sec:authorize access="hasRole('ROLE_USER_CLIENT')">
 			<li class="nav-item"><a class="nav-link"
 				href="<c:url value="/demandefi/toCreate" />"><spring:message
 						code="commons.nav.demandeFi" /></a></li>
@@ -26,13 +26,11 @@
 			<li class="nav-item"><a class="nav-link"
 				href="<c:url value="/enCoursFi" />"><spring:message
 						code="commons.nav.enCoursFi" /></a></li>
-			<li class="nav-item"><a class="nav-link"
-				href="<c:url value="/contactCon" />"><spring:message
-						code="commons.nav.contactCon" /></a></li>
+			
 						
 		</sec:authorize>
 		
-		<sec:authorize access="hasAnyRole('ROLE_PO', 'ROLE_ADMIN')">
+		<sec:authorize access="hasRole('ROLE_ADMIN')">
 			<li class="nav-item dropdown"><a
 				class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 				role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -57,13 +55,56 @@
 						
 		</sec:authorize>
 		
-		<sec:authorize access="hasAnyRole('ROLE_PO', 'ROLE_USER_PRO')">
+		<sec:authorize access="hasRole('ROLE_USER_PRO')">
 			<li class="nav-item"><a class="nav-link"
 				href="<c:url value="/gestionportefeuille" />"><spring:message
 						code="commons.nav.gestionportefeuille" /></a></li>
 			
 		</sec:authorize>
+		
+		<sec:authorize access="hasRole('ROLE_PO')">
+		<li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         <spring:message
+						code="commons.nav.gestion" />
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item"
+				href="<c:url value="/gestionportefeuille" />"><spring:message
+						code="commons.nav.gestionportefeuille" /></a>
+          <a class="dropdown-item"
+				href="<c:url value="/demandefi/histoFi" />"><spring:message
+						code="commons.nav.histoFi" /></a>
+          
+        </div>
+      </li>
+			<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+				role="button" data-toggle="dropdown" aria-haspopup="true"
+				aria-expanded="false"> <spring:message
+						code="commons.nav.creation" />
+			</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item" href="<c:url value="/users/toUpdate" />"><spring:message
+							code="commons.nav.creation.po" /></a>
+							<a class="dropdown-item" href="<c:url value="/logout" />"><spring:message
+							code="commons.nav.creation.banquier" /></a>
+							<a class="dropdown-item" href="<c:url value="/users/toUpdate" />"><spring:message
+							code="commons.nav.creation.client" /></a>
+				</div></li>
+				<li class="nav-item"><a class="nav-link"
+				href="<c:url value="/listeutil" />"><spring:message
+						code="commons.nav.listeutil" /></a></li>
+			<li class="nav-item"><a class="nav-link"
+				href="<c:url value="/perfplus" />"><spring:message
+						code="commons.nav.lperfplus" /></a></li>
+			
+		</sec:authorize>
+		
+		
 		</ul>
+		
+		
 	
 		<sec:authorize access="isAuthenticated()">
 		<ul class="nav navbar-nav navbar-right">
