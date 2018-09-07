@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.ajcbanque.projetBFI.AppLanguage;
+import fr.ajcbanque.projetBFI.dto.ClientCreateDTO;
 import fr.ajcbanque.projetBFI.dto.ClientDTO;
 import fr.ajcbanque.projetBFI.entities.Client;
 import fr.ajcbanque.projetBFI.repositories.IClientJpaRepository;
@@ -57,5 +58,10 @@ public class clientService implements IClientService {
     @Override
     public Long findIdClientByUser(Long userId) {
 	return userJpaRepository.findIdClientByUser(userId);
+    }
+
+    @Override
+    public List<ClientCreateDTO> findIdAndInfoCompletAsDTO() {
+	return clientRepository.findIdAndInfoCompletAsDTO();
     }
 }

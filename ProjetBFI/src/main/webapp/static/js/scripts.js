@@ -30,3 +30,9 @@ $(function() {
 	$(".datepicker").datepicker();
 
 });
+
+function getCollaborateurInfos (collaborateurId) {
+	if(collaborateurId != 0) {
+		window.location = window.location.origin + "/ProjetBFI/users" + "/toPopulateCreateCollaborateur/" + collaborateurId;
+	}
+}
