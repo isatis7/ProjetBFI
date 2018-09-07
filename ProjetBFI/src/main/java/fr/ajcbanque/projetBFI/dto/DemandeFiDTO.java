@@ -47,7 +47,7 @@ public class DemandeFiDTO {
 	setDuree(duree);
 	setDateEffective(dateEffective);
 	setMontant(montant);
-	setDevise(devise);
+	setDevise(codeIso);
 	setTypeFinancement(typeFinancement);
     }
 

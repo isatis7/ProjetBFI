@@ -36,8 +36,8 @@
 								<tr>
 									<td>${financement.duree}</td>
 									<td>${financement.montant}</td>
-									<td>${financement.dateEffective}</td>
 									<td>${financement.devise}</td>
+									<td>${financement.dateEffective}</td>
 									<td>${financement.typeFinancement}</td>
 									<td></td>
 									
