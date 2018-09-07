@@ -49,7 +49,7 @@
 				href="<c:url value="/listeutil" />"><spring:message
 						code="commons.nav.listeutil" /></a></li>
 			<li class="nav-item"><a class="nav-link"
-				href="<c:url value="/perfplus" />"><spring:message
+				href="<c:url value="/perfplus/toCreate" />"><spring:message
 						code="commons.nav.lperfplus" /></a></li>
 			
 						
