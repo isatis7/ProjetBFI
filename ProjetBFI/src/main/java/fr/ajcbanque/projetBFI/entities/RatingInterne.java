@@ -1,12 +1,14 @@
 package fr.ajcbanque.projetBFI.entities;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -14,6 +16,7 @@ public class RatingInterne implements Serializable {
     /**
      *
      */
+    @Transient
     private static final long serialVersionUID = -3181838841059743882L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +26,7 @@ public class RatingInterne implements Serializable {
     private String	      code;
     @NotNull(message = "{error.commons.required}")
     @Column(nullable = false)
-    private Float	      coefficientRisque;
+    private BigDecimal	      coefficientRisque;
 
     public RatingInterne() {
 	//
@@ -45,11 +48,11 @@ public class RatingInterne implements Serializable {
 	this.code = code;
     }
 
-    public Float getCoefficientRisque() {
+    public BigDecimal getCoefficientRisque() {
 	return coefficientRisque;
     }
 
-    public void setCoefficientRisque(Float coefficientRisque) {
+    public void setCoefficientRisque(BigDecimal coefficientRisque) {
 	this.coefficientRisque = coefficientRisque;
     }
 

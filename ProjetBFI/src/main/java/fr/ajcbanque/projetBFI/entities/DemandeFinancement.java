@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -19,6 +20,7 @@ public class DemandeFinancement implements Serializable {
     /**
      *
      */
+    @Transient
     private static final long serialVersionUID = 7940205110557467195L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,13 +35,13 @@ public class DemandeFinancement implements Serializable {
     private String	      reference;
     @NotNull(message = "{error.commons.required}")
     @Column(nullable = false)
-    private Float	      duree;
+    private BigDecimal	      duree;
     @NotNull(message = "{error.commons.required}")
     @Column(nullable = false)
     private LocalDate	      dateEffective;
     @NotNull(message = "{error.commons.required}")
     @Column(nullable = false)
-    private Float	      montant;
+    private BigDecimal	      montant;
     @ManyToOne
     @NotNull(message = "{error.commons.required}")
     @JoinColumn(nullable = false)
@@ -48,7 +50,7 @@ public class DemandeFinancement implements Serializable {
     @NotNull(message = "{error.commons.required}")
     @JoinColumn(nullable = false)
     private TypeFinancement   typeFinancement;
-    // @Column(nullable = false)
+    @Column(nullable = false)
     private BigDecimal	      perfPlus;
     private boolean	      validation;
 
@@ -88,11 +90,11 @@ public class DemandeFinancement implements Serializable {
 	this.reference = reference;
     }
 
-    public Float getDuree() {
+    public BigDecimal getDuree() {
 	return duree;
     }
 
-    public void setDuree(Float duree) {
+    public void setDuree(BigDecimal duree) {
 	this.duree = duree;
     }
 
@@ -104,11 +106,11 @@ public class DemandeFinancement implements Serializable {
 	this.dateEffective = dateEffective;
     }
 
-    public Float getMontant() {
+    public BigDecimal getMontant() {
 	return montant;
     }
 
-    public void setMontant(Float montant) {
+    public void setMontant(BigDecimal montant) {
 	this.montant = montant;
     }
 
