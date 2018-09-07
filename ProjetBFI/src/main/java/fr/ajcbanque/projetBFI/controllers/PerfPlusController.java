@@ -16,7 +16,7 @@ import fr.ajcbanque.projetBFI.entities.Parametres;
 import fr.ajcbanque.projetBFI.services.IParametresService;
 
 @Controller
-@PreAuthorize("AsAnyRole('ROLE_ADMIN', 'ROLE_PO')")
+@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_PO')")
 @RequestMapping("/perfplus")
 public class PerfPlusController {
     private final IParametresService parametresService;
@@ -37,6 +37,6 @@ public class PerfPlusController {
 	    @Valid @ModelAttribute("parametres") Parametres parametres,
 	    BindingResult result, Model model) {
 	parametresService.save(parametres);
-	return "redirect:/demandefi/histoFi";
+	return "perfplus/toCreate";
     }
 }
