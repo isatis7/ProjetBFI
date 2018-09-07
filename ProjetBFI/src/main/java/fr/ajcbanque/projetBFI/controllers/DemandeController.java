@@ -108,7 +108,7 @@ public class DemandeController extends BaseController {
     @GetMapping("/histoFi")
     public String histoFi(Model model) {
 	List<DemandeFiDTO> financement = demandeFiService
-		.findAllAsDTO(getAppLanguage());
+		.findAllAsClientDTO(getAppLanguage());
 	model.addAttribute("financements", financement);
 	return "histoFi";
     }
