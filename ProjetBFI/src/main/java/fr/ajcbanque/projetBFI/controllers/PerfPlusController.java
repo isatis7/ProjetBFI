@@ -1,6 +1,7 @@
 package fr.ajcbanque.projetBFI.controllers;
 
 import javax.validation.Valid;
+import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -26,18 +27,21 @@ public class PerfPlusController {
     }
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_PO')")
-    @GetMapping("/toCreate")
-    public String toCreate(@ModelAttribute("parametres") Parametres parametres,
-	    Model model) {
+    @GetMapping("/toUpdate/{id}")
+    public String toUpdate(@PathParam("id") Long id, Model model) {
+	Parametres param = parametresService.findById(id);
+	model.addAttribute("param", param);
 	return "perfplus";
     }
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_PO')")
-    @PostMapping("/create")
+    @PostMapping("/update")
     public String create(
 	    @Valid @ModelAttribute("parametres") Parametres parametres,
 	    BindingResult result, Model model) {
-	parametresService.save(parametres);
+	if (!result.hasErrors()) {
+	    parametresService.save(parametres);
+	}
 	return "perfplus";
     }
 }

@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html lang="${pageContext.response.locale.language}">
 <head>
@@ -19,19 +20,22 @@
 			<h1 class="text-primary">
 				<spring:message code="perfplus.title" />
 			</h1>
-			<form method="POST" action="<c:url value="/perfplus/create" />">
+			<form:form method="POST" action="<c:url value="/perfplus/update" />">
+			<form:hidden path="id"/>
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 				<div class="form-group">
-					<label for="paramA"><spring:message code="perfplus.paramA" /></label>
-					<input type="text" name="paramA" value="" maxlength="5" class="form-control">
+					<form:label path="paramA"><spring:message code="perfplus.paramA" /></form:label>
+					<form:input path="paramA" maxlength="5" class="form-control" />
+					<form:errors element="div" path="paramA" cssClass="invalid-feedback" />
 				</div>
 				<div class="form-group">
-					<label for="paramB"><spring:message code="perfplus.paramB" /></label>
-					<input type="text" name="paramB" value="" maxlength="5" class="form-control">
+					<form:label path="paramB"><spring:message code="perfplus.paramB" /></form:label>
+					<form:input path="paramB" maxlength="5" class="form-control" />
+					<form:errors element="div" path="paramB" cssClass="invalid-feedback" />
 				</div>
-				<button type="submit" class="btn btn-primary mb-3"><spring:message code="perfPlus.submit" /></button>
+				<form:button type="submit" class="btn btn-primary mb-3"><spring:message code="perfPlus.submit" /></form:button>
 				
-			</form>
+			</form:form>
 		</section>
 	</div>
 	</div>
