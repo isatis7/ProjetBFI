@@ -20,7 +20,8 @@
 			<h1 class="text-primary">
 				<spring:message code="perfplus.title" />
 			</h1>
-			<form:form method="POST" action="<c:url value="/perfplus/update" />">
+			<c:url value="/perfplus/update" var="formUrl" />
+			<form:form method="POST" action="${formUrl}" modelAttribute="parametres">
 			<form:hidden path="id"/>
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 				<div class="form-group">
