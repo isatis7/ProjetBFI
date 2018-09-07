@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -16,6 +17,7 @@ public class Client implements Serializable {
     /**
      *
      */
+    @Transient
     private static final long serialVersionUID = 8050566319210542572L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -14,6 +15,7 @@ public class Collaborateur implements Serializable {
     /**
      *
      */
+    @Transient
     private static final long serialVersionUID = 8494510760349250205L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

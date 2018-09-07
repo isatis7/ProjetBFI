@@ -20,6 +20,7 @@
 			<h1 class="text-primary"><spring:message code="entities.demande.create.title" /></h1>
 			<h3 class="text-primary"><spring:message code="entities.demande.create.hello" /><sec:authentication property="principal.user.firstname"/><spring:message code="entities.demande.create.helloSuite" /><fmt:formatDate value="${today}" pattern="dd/MM/yyyy"/></h3>
 			<form:form action="create" method="POST" modelAttribute="demandeFinancement">
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 			<form:hidden path="client.id"/>
 				<div class="form-row ">
 					<div class="form-group col " >

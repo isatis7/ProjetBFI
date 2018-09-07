@@ -1,20 +1,22 @@
 package fr.ajcbanque.projetBFI.dto;
 
+import java.math.BigDecimal;
+
 public class ClientDTO {
-    private Long   id;
-    private String code;
-    private String nom;
-    private String formeJuridique;
-    private String pays;
-    private String numCompteBancaire;
-    private Float  ratingInterne;
+    private Long       id;
+    private String     code;
+    private String     nom;
+    private String     formeJuridique;
+    private String     pays;
+    private String     numCompteBancaire;
+    private BigDecimal ratingInterne;
 
     public ClientDTO() {
 	//
     }
 
     public ClientDTO(Long id, String code, String nom, String formeJuridique,
-	    String pays, String numCompteBancaire, Float ratingInterne) {
+	    String pays, String numCompteBancaire, BigDecimal ratingInterne) {
 	setId(id);
 	setCode(code);
 	setNom(nom);
@@ -72,11 +74,11 @@ public class ClientDTO {
 	this.numCompteBancaire = numCompteBancaire;
     }
 
-    public Float getRatingInterne() {
+    public BigDecimal getRatingInterne() {
 	return ratingInterne;
     }
 
-    public void setRatingInterne(Float ratingInterne) {
+    public void setRatingInterne(BigDecimal ratingInterne) {
 	this.ratingInterne = ratingInterne;
     }
 }

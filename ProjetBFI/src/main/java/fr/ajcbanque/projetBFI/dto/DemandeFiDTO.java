@@ -8,9 +8,9 @@ public class DemandeFiDTO {
     private String     client;
     private LocalDate  dateDemande;
     private String     reference;
-    private Float      duree;
+    private BigDecimal duree;
     private LocalDate  dateEffective;
-    private Float      montant;
+    private BigDecimal montant;
     private String     devise;
     private String     typeFinancement;
     private BigDecimal perfPlus;
@@ -21,8 +21,8 @@ public class DemandeFiDTO {
     }
 
     public DemandeFiDTO(Long id, String client, LocalDate dateDemande,
-	    String reference, Float duree, LocalDate dateEffective,
-	    Float montant, String devise, String typeFinancement,
+	    String reference, BigDecimal duree, LocalDate dateEffective,
+	    BigDecimal montant, String devise, String typeFinancement,
 	    BigDecimal perfPlus, boolean validation) {
 	setId(id);
 	setClient(client);
@@ -38,8 +38,8 @@ public class DemandeFiDTO {
     }
 
     public DemandeFiDTO(Long id, String client, LocalDate dateDemande,
-	    String reference, Float duree, LocalDate dateEffective,
-	    Float montant, String codeIso, String typeFinancement) {
+	    String reference, BigDecimal duree, LocalDate dateEffective,
+	    BigDecimal montant, String codeIso, String typeFinancement) {
 	setId(id);
 	setClient(client);
 	setDateDemande(dateDemande);
@@ -83,11 +83,11 @@ public class DemandeFiDTO {
 	this.reference = reference;
     }
 
-    public Float getDuree() {
+    public BigDecimal getDuree() {
 	return duree;
     }
 
-    public void setDuree(Float duree) {
+    public void setDuree(BigDecimal duree) {
 	this.duree = duree;
     }
 
@@ -99,11 +99,11 @@ public class DemandeFiDTO {
 	this.dateEffective = dateEffective;
     }
 
-    public Float getMontant() {
+    public BigDecimal getMontant() {
 	return montant;
     }
 
-    public void setMontant(Float montant) {
+    public void setMontant(BigDecimal montant) {
 	this.montant = montant;
     }
 
