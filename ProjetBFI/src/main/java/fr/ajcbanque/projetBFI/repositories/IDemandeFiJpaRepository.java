@@ -6,4 +6,8 @@ import fr.ajcbanque.projetBFI.entities.DemandeFinancement;
 
 public interface IDemandeFiJpaRepository extends
 					 JpaRepository<DemandeFinancement, Long> {
+    public boolean existsByReferenceIgnoreCase(String reference);
+
+    public boolean existsByReferenceIgnoreCaseAndIdNot(String reference,
+	    Long id);
 }
