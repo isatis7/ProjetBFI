@@ -18,10 +18,10 @@
 		
 		<sec:authorize access="hasAnyRole('ROLE_USER_CLIENT', 'ROLE_PO')">
 			<li class="nav-item"><a class="nav-link"
-				href="<c:url value="/demandeFi" />"><spring:message
+				href="<c:url value="/demandefi/toCreate" />"><spring:message
 						code="commons.nav.demandeFi" /></a></li>
 			<li class="nav-item"><a class="nav-link"
-				href="<c:url value="/histoFi" />"><spring:message
+				href="<c:url value="/demandefi/histoFi" />"><spring:message
 						code="commons.nav.histoFi" /></a></li>
 			<li class="nav-item"><a class="nav-link"
 				href="<c:url value="/enCoursFi" />"><spring:message
