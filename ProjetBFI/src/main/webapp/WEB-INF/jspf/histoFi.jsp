@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="${pageContext.response.locale.language}">
 <head>
-<title><spring:message code="entities.demande.create.title" /></title>
+<title><spring:message code="home.client.histofi" /></title>
 <c:import url="commonsHead.jsp" />
 </head>
 <body>
@@ -18,29 +18,30 @@
 	<div class="col-sm-8">
 		<section>
 		<h1 class="text-primary">
-				<spring:message code="home.welcome.courses" />
+				<spring:message code="home.client.histofi" />
 			</h1>
 			<div class="table-responsive">
 				<table class="table table-hover">
 					<thead class="thead-light">
 						<tr>
-							<th><spring:message code="home.client.histofi.duree" /></th>
-							<th><spring:message code="home.client.histofi.montant" /></th>
-							<th><spring:message code="home.client.histofi.dateeff" /></th>
-							<th><spring:message code="home.client.histofi.devise" /></th>
-							<th><spring:message code="home.client.histofi.typefi" /></th>
+							<th><spring:message code="entities.demandeFinancement.duree" /></th>
+							<th><spring:message code="entities.demandeFinancement.montant" /></th>
+							<th><spring:message code="entities.demandeFinancement.dateEffective" /></th>
+							<th><spring:message code="entities.demandeFinancement.devise" /></th>
+							<th><spring:message code="entities.demandeFinancement.typeFinancement" /></th>
 							<th><spring:message code="commons.symbols.nbsp" /></th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-						<c:forEach items="${courses}" var="course">
+						<c:forEach items="${financements}" var="financement">
 							<tr>
-								<td>${course.typeName}</td>
-								<td>${course.code}</td>
-								<td><spring:message code="commons.symbols.euro" />${course.price}</td>
-								<td>${course.name}</td>
-								<td><a href="<c:url value="/courses/toUpdate?id=${course.id}" />"><spring:message code="home.welcome.courses.update" /></a></td>
+								<td>${financement.duree}</td>
+								<td>${financement.montant}</td>
+								<td>${financement.dateeff}</td>
+								<td>${financement.devise}</td>
+								<td>${financement.typefi}</td>
+								<td><a href="<c:url value="/demandefi/toUpdate?id=${financement.id}" />"><spring:message code="home.client.histofi.update" /></a></td>
 							</tr>
 						</c:forEach>
 					</tbody>
