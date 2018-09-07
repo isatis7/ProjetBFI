@@ -53,7 +53,7 @@
 			<li class="nav-item"><a class="nav-link"
 
 
-				href="<c:url value="/perfplus/toCreate" />"><spring:message
+				href="<c:url value="/perfplus/toUpdate/1" />"><spring:message
 
 						code="commons.nav.perfplus" /></a></li>
 
@@ -119,10 +119,9 @@
 							code="commons.nav.creation" />
 				</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="<c:url value="/users/toUpdate" />"><spring:message
-								code="commons.nav.creation.po" /></a> <a class="dropdown-item"
+						<a class="dropdown-item"
 							href="<c:url value="/logout" />"><spring:message
-								code="commons.nav.creation.banquier" /></a> <a
+								code="commons.nav.creation.collaborateur" /></a> <a
 							class="dropdown-item" href="<c:url value="/users/toUpdate" />"><spring:message
 								code="commons.nav.creation.client" /></a>
 					</div></li>
@@ -167,10 +166,9 @@
 							code="commons.nav.creation" />
 				</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="<c:url value="/users/toUpdate" />"><spring:message
-								code="commons.nav.creation.po" /></a> <a class="dropdown-item"
+						<a class="dropdown-item"
 							href="<c:url value="/logout" />"><spring:message
-								code="commons.nav.creation.banquier" /></a> <a
+								code="commons.nav.creation.collaborateur" /></a> <a
 							class="dropdown-item" href="<c:url value="/users/toUpdate" />"><spring:message
 								code="commons.nav.creation.client" /></a>
 					</div></li>
