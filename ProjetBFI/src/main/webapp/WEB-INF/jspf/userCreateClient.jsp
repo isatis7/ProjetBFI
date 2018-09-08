@@ -21,7 +21,7 @@
 
 			<p class="bg-success">
 				<c:if test="${success}">
-					<span class="success"> <spring:message
+					<span class="alert alert-success"> <spring:message
 							code="commons.forms.create.user.client.success" />
 					</span>
 				</c:if>
