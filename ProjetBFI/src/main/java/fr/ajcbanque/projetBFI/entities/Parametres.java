@@ -1,5 +1,6 @@
 package fr.ajcbanque.projetBFI.entities;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 import javax.persistence.Column;
@@ -10,16 +11,20 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class Parametres {
+public class Parametres implements Serializable {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 2865600108666403947L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long       id;
+    private Long	      id;
     @NotNull(message = "{error.commons.required}")
-    @Column(nullable = false)
-    private BigDecimal ParamA;
+    @Column(nullable = false, precision = 19, scale = 2)
+    private BigDecimal	      ParamA;
     @NotNull(message = "{error.commons.required}")
-    @Column(nullable = false)
-    private BigDecimal ParamB;
+    @Column(nullable = false, precision = 19, scale = 3)
+    private BigDecimal	      ParamB;
 
     public Parametres() {
 	//
