@@ -7,7 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Collaborateur implements Serializable {
@@ -18,16 +19,17 @@ public class Collaborateur implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long	      id;
-    @NotNull(message = "{error.commons.required}")
+    @NotBlank(message = "{error.commons.required}")
     @Column(length = 10, nullable = false, unique = true)
     private String	      matriculeInterne;
-    @NotNull(message = "{error.commons.required}")
+    @NotBlank(message = "{error.commons.required}")
     @Column(length = 255, nullable = false)
     private String	      nom;
-    @NotNull(message = "{error.commons.required}")
+    @NotBlank(message = "{error.commons.required}")
     @Column(length = 255, nullable = false)
     private String	      prenom;
-    @NotNull(message = "{error.commons.required}")
+    @Email(message = "{error.commons.email}")
+    @NotBlank(message = "{error.commons.required}")
     @Column(length = 255, nullable = false, unique = true)
     private String	      email;
 

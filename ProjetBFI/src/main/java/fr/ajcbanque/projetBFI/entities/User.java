@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -26,13 +27,13 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long	      id;
-    @NotNull(message = "{error.commons.required}")
+    @NotBlank(message = "{error.commons.required}")
     @Column(length = 50, nullable = false)
     private String	      lastname;
-    @NotNull(message = "{error.commons.required}")
+    @NotBlank(message = "{error.commons.required}")
     @Column(length = 50, nullable = false)
     private String	      firstname;
-    @NotNull(message = "{error.commons.required}")
+    @NotBlank(message = "{error.commons.required}")
     @Email(message = "{error.commons.email}")
     @Column(length = 255, nullable = false, unique = true)
     private String	      email;

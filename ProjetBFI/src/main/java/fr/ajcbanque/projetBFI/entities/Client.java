@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -20,10 +21,10 @@ public class Client implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long	      id;
-    @NotNull(message = "{error.commons.required}")
+    @NotBlank(message = "{error.commons.required}")
     @Column(length = 10, nullable = false, unique = true)
     private String	      code;
-    @NotNull(message = "{error.commons.required}")
+    @NotBlank(message = "{error.commons.required}")
     @Column(length = 100, nullable = false)
     private String	      nom;
     @ManyToOne

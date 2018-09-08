@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class FormeJuridique implements Serializable {
@@ -18,7 +18,7 @@ public class FormeJuridique implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long	      id;
-    @NotNull(message = "{error.commons.required}")
+    @NotBlank(message = "{error.commons.required}")
     @Column(length = 20, nullable = false, unique = true)
     private String	      nom;
 
