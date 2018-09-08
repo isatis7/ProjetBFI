@@ -169,6 +169,9 @@ public class UserController extends BaseController {
 	if (Long.valueOf(0L).equals(collaborateur.getId())) {
 	    result.rejectValue("collaborateur.id", "error.commons.required");
 	}
+	if (!userService.validateEmail(user)) {
+	    result.rejectValue("email", "error.entities.user.duplicateEmail");
+	}
     }
 
     private void validateCreateClient(User user, BindingResult result) {
