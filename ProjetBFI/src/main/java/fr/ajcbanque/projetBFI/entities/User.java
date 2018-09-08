@@ -55,8 +55,8 @@ public class User implements Serializable {
     @Convert(converter = BooleanConverter.class)
     @Column(length = 1, nullable = false)
     private boolean	      enabled		    = true;
-    @ManyToMany(fetch = FetchType.LAZY)
-    private List<Client>      porteFeuilleClients;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<User>	      porteFeuilleClients;
     @OneToOne
     private Client	      client;
     @OneToOne
@@ -162,24 +162,12 @@ public class User implements Serializable {
 	this.collaborateur = collaborateur;
     }
 
-    public List<Client> getPorteFeuilleClients() {
+    public List<User> getPorteFeuilleClients() {
 	return porteFeuilleClients;
     }
 
-    public void setPorteFeuilleClients(List<Client> porteFeuilleClients) {
+    public void setPorteFeuilleClients(List<User> porteFeuilleClients) {
 	this.porteFeuilleClients = porteFeuilleClients;
-    }
-
-    @Override
-    public String toString() {
-	return "User [id=" + id + ", lastname=" + lastname + ", firstname="
-		+ firstname + ", email=" + email + ", password=" + password
-		+ ", role=" + role + ", accountNonExpired=" + accountNonExpired
-		+ ", accountNonLocked=" + accountNonLocked
-		+ ", credentialsNonExpired=" + credentialsNonExpired
-		+ ", enabled=" + enabled + ", porteFeuilleClients="
-		+ porteFeuilleClients + ", client=" + client
-		+ ", collaborateur=" + collaborateur + "]";
     }
 
     @Override
@@ -291,6 +279,18 @@ public class User implements Serializable {
 	    return false;
 	}
 	return true;
+    }
+
+    @Override
+    public String toString() {
+	return "User [id=" + id + ", lastname=" + lastname + ", firstname="
+		+ firstname + ", email=" + email + ", password=" + password
+		+ ", role=" + role + ", accountNonExpired=" + accountNonExpired
+		+ ", accountNonLocked=" + accountNonLocked
+		+ ", credentialsNonExpired=" + credentialsNonExpired
+		+ ", enabled=" + enabled + ", porteFeuilleClients="
+		+ porteFeuilleClients + ", client=" + client
+		+ ", collaborateur=" + collaborateur + "]";
     }
 
     public static enum Role {
