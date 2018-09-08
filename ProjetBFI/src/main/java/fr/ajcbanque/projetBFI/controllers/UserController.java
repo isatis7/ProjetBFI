@@ -122,7 +122,7 @@ public class UserController extends BaseController {
 
     private void populateModel(Model model) {
 	List<CollaborateurDTO> collaborateurs = collaborateurService
-		.findAllAsDTO();
+		.findCustomCreateUserAsDTO();
 	model.addAttribute("collaborateurs", collaborateurs);
 	List<ClientCreateDTO> clients = clientService
 		.findIdAndInfoCompletAsDTO();

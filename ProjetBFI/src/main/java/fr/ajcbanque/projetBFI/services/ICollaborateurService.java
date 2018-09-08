@@ -9,4 +9,6 @@ public interface ICollaborateurService {
     public List<CollaborateurDTO> findAllAsDTO();
 
     public Collaborateur findById(Long id);
+
+    public List<CollaborateurDTO> findCustomCreateUserAsDTO();
 }

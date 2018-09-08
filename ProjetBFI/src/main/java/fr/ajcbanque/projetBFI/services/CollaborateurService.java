@@ -35,4 +35,9 @@ public class CollaborateurService implements ICollaborateurService {
 		.findById(id);
 	return optional.get();
     }
+
+    @Override
+    public List<CollaborateurDTO> findCustomCreateUserAsDTO() {
+	return collaborateurRepository.findCustomCreateUserAsDTO();
+    }
 }

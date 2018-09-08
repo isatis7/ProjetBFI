@@ -7,5 +7,5 @@ import fr.ajcbanque.projetBFI.dto.CollaborateurDTO;
 public interface ICollaborateurRepository {
     public List<CollaborateurDTO> findAllAsDTO();
 
-    public CollaborateurDTO findByIdAsDTO(Long id);
+    public List<CollaborateurDTO> findCustomCreateUserAsDTO();
 }
