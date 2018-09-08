@@ -19,14 +19,13 @@
 				<spring:message code="entities.user.create.client.title" />
 			</h1>
 
-			<p class="bg-success">
-				<c:if test="${success}">
-					<span class="alert alert-success"> <spring:message
-							code="commons.forms.create.user.client.success" />
-					</span>
-				</c:if>
-			</p>
-			
+			<c:if test="${success}">
+				<div class="alert alert-success">
+					<spring:message code="commons.forms.create.user.client.success" />
+				</div>
+			</c:if>
+
+
 			<form:form action="createClient" method="POST" modelAttribute="user">
 				<input type="hidden" name="${_csrf.parameterName}"
 					value="${_csrf.token}" />
