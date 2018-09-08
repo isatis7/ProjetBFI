@@ -22,7 +22,7 @@
 			<p class="bg-success">
 				<c:if test="${success}">
 					<span class="success"> <spring:message
-							code="commons.forms.create.user.collaborateur.success" />
+							code="commons.forms.create.user.client.success" />
 					</span>
 				</c:if>
 			</p>
