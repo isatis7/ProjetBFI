@@ -37,7 +37,7 @@ public class User implements Serializable {
     @Email(message = "{error.commons.email}")
     @Column(length = 255, nullable = false, unique = true)
     private String	      email;
-    @NotNull(message = "{error.commons.required}")
+    @NotBlank(message = "{error.commons.required}")
     @Column(length = 100, nullable = false)
     private String	      password;
     @NotNull(message = "{error.commons.required}")
