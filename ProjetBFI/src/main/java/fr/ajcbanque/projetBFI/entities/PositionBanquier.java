@@ -11,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -19,7 +18,6 @@ public class PositionBanquier implements Serializable {
     /**
      *
      */
-    @Transient
     private static final long serialVersionUID = 1846167136959477944L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

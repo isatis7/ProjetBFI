@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -17,7 +16,6 @@ public class Pays implements Serializable {
     /**
      *
      */
-    @Transient
     private static final long serialVersionUID = -683617318853966771L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

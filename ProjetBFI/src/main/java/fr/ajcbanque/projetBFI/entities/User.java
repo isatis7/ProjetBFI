@@ -14,13 +14,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Transient;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
 @Entity
 public class User implements Serializable {
-    @Transient
+    /**
+    *
+    */
     private static final long serialVersionUID	    = 1800900843909976847L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

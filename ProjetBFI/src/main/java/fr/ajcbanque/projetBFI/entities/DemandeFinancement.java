@@ -11,7 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -20,7 +19,6 @@ public class DemandeFinancement implements Serializable {
     /**
      *
      */
-    @Transient
     private static final long serialVersionUID = 7940205110557467195L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
