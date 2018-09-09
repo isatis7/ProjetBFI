@@ -36,12 +36,23 @@ public class PerfPlusController {
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_PO')")
     @PostMapping("/update")
-    public String create(
+    public String update(
 	    @Valid @ModelAttribute("parametres") Parametres parametres,
 	    BindingResult result, Model model) {
-	if (!result.hasErrors()) {
-	    parametresService.save(parametres);
+	if (validateAndSave(parametres, result, model)) {
+	    model.addAttribute("success", true);
+	    model.addAttribute("parametres", new Parametres());
 	}
 	return "perfplus";
+    }
+
+    private boolean validateAndSave(Parametres parametres, BindingResult result,
+	    Model model) {
+	if (!result.hasErrors()) {
+	    parametresService.save(parametres);
+	    return true;
+	}
+	model.addAttribute("erreur", true);
+	return false;
     }
 }

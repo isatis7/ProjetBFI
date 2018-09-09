@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,7 +26,7 @@ public class DemandeFinancement implements Serializable {
     private Long	      id;
     @ManyToOne
     @JoinColumn(nullable = false)
-    private Client	      client	       = new Client();
+    private User	      user	       = new User();
     @Column(nullable = false)
     private LocalDate	      dateDemande;
     @NotBlank(message = "{error.commons.required}")
@@ -50,7 +51,9 @@ public class DemandeFinancement implements Serializable {
     private TypeFinancement   typeFinancement;
     @Column(nullable = false)
     private BigDecimal	      perfPlus;
-    private boolean	      validation;
+    @Convert(converter = BooleanConverter.class)
+    @Column(length = 1, nullable = false)
+    private boolean	      validation       = false;
 
     public DemandeFinancement() {
 	//
@@ -64,12 +67,12 @@ public class DemandeFinancement implements Serializable {
 	this.id = id;
     }
 
-    public Client getClient() {
-	return client;
+    public User getUser() {
+	return user;
     }
 
-    public void setClient(Client client) {
-	this.client = client;
+    public void setUser(User user) {
+	this.user = user;
     }
 
     public LocalDate getDateDemande() {
@@ -148,7 +151,6 @@ public class DemandeFinancement implements Serializable {
     public int hashCode() {
 	final int prime = 31;
 	int result = 1;
-	result = prime * result + ((client == null) ? 0 : client.hashCode());
 	result = prime * result
 		+ ((dateDemande == null) ? 0 : dateDemande.hashCode());
 	result = prime * result
@@ -163,6 +165,8 @@ public class DemandeFinancement implements Serializable {
 		+ ((reference == null) ? 0 : reference.hashCode());
 	result = prime * result
 		+ ((typeFinancement == null) ? 0 : typeFinancement.hashCode());
+	result = prime * result + ((user == null) ? 0 : user.hashCode());
+	result = prime * result + (validation ? 1231 : 1237);
 	return result;
     }
 
@@ -178,13 +182,6 @@ public class DemandeFinancement implements Serializable {
 	    return false;
 	}
 	DemandeFinancement other = (DemandeFinancement) obj;
-	if (client == null) {
-	    if (other.client != null) {
-		return false;
-	    }
-	} else if (!client.equals(other.client)) {
-	    return false;
-	}
 	if (dateDemande == null) {
 	    if (other.dateDemande != null) {
 		return false;
@@ -248,12 +245,22 @@ public class DemandeFinancement implements Serializable {
 	} else if (!typeFinancement.equals(other.typeFinancement)) {
 	    return false;
 	}
+	if (user == null) {
+	    if (other.user != null) {
+		return false;
+	    }
+	} else if (!user.equals(other.user)) {
+	    return false;
+	}
+	if (validation != other.validation) {
+	    return false;
+	}
 	return true;
     }
 
     @Override
     public String toString() {
-	return "DemandeFinancement [id=" + id + ", client=" + client
+	return "DemandeFinancement [id=" + id + ", user=" + user
 		+ ", dateDemande=" + dateDemande + ", reference=" + reference
 		+ ", duree=" + duree + ", dateEffective=" + dateEffective
 		+ ", montant=" + montant + ", devise=" + devise

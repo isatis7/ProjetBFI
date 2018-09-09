@@ -6,7 +6,9 @@ import fr.ajcbanque.projetBFI.AppLanguage;
 import fr.ajcbanque.projetBFI.dto.DemandeFiDTO;
 
 public interface IDemandeFiRepository {
-    public List<DemandeFiDTO> findAllAsClientDTO(AppLanguage lang);
+    public List<DemandeFiDTO> findByIdUserAsDTO(AppLanguage lang, Long id);
 
-    public List<DemandeFiDTO> findAllAsProDTO(AppLanguage lang);
+    public List<DemandeFiDTO> findAllAsDTO(AppLanguage lang);
+
+    public List<DemandeFiDTO> findAllProAsDTO(AppLanguage lang, Long id);
 }

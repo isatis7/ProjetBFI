@@ -46,6 +46,7 @@ public class UserController extends BaseController {
 	this.clientService = clientService;
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_PO')")
     @GetMapping("/toCreateCollaborateur")
     public String toCreateCollaborateur(@ModelAttribute("user") User user,
 	    Model model) {
@@ -53,16 +54,19 @@ public class UserController extends BaseController {
 	return "userCreateCollaborateur";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_PO')")
     @PostMapping("/createCollaborateur")
     public String createCollaborateurPost() {
 	return "redirect:/users/toCreateCollaborateur";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_PO')")
     @GetMapping("/createCollaborateur")
     public String createCollaborateurGet() {
 	return "redirect:/users/toCreateCollaborateur";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_PO')")
     @PostMapping("/toPopulateCreateCollaborateur/createCollaborateur")
     public String createCollaborateur(@Valid @ModelAttribute("user") User user,
 	    BindingResult result, Model model) {
@@ -78,6 +82,7 @@ public class UserController extends BaseController {
 	return "userCreateCollaborateur";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_PO')")
     @GetMapping("/toPopulateCreateCollaborateur/{id}")
     public String toPopulateCreateCollaborateur(@PathVariable("id") Long id,
 	    @ModelAttribute("user") User user, Model model) {
@@ -87,6 +92,7 @@ public class UserController extends BaseController {
 	return "userCreateCollaborateur";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_PO')")
     @GetMapping("/toCreateClient")
     public String toCreateClient(@ModelAttribute("user") User user,
 	    Model model) {
@@ -94,6 +100,7 @@ public class UserController extends BaseController {
 	return "userCreateClient";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_PO')")
     @PostMapping("/createClient")
     public String createClient(@Valid @ModelAttribute("user") User user,
 	    BindingResult result, Model model) {
@@ -105,6 +112,7 @@ public class UserController extends BaseController {
 	return "userCreateClient";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_PO')")
     @GetMapping("/toUpdateCollaborateur")
     public String toUpdateCollaborateur(Model model) {
 	User user = userService.findById(getUser().getId());
@@ -112,6 +120,7 @@ public class UserController extends BaseController {
 	return "userUpdateCollaborateur";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_PO')")
     @PostMapping("/updateCollaborateur")
     public String updateCollaborateur(@Valid @ModelAttribute("user") User user,
 	    BindingResult result, Model model) {
@@ -122,6 +131,7 @@ public class UserController extends BaseController {
 	return "userUpdateCollaborateur";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_PO')")
     @GetMapping("/toUpdateClient")
     public String toUpdateClient(Model model) {
 	User user = userService.findById(getUser().getId());
@@ -129,6 +139,7 @@ public class UserController extends BaseController {
 	return "userUpdateClient";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_PO')")
     @PostMapping("/updateClient")
     public String updateClient(@Valid @ModelAttribute("user") User user,
 	    BindingResult result, Model model) {

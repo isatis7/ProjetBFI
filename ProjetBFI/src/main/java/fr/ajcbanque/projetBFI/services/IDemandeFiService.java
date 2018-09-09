@@ -15,9 +15,9 @@ public interface IDemandeFiService {
 
     public void deleteById(Long id);
 
+    public List<DemandeFiDTO> findByIdUserAsDTO(AppLanguage lang, Long id);
+
+    public List<DemandeFiDTO> findAllProAsDTO(AppLanguage lang, Long id);
+
     public List<DemandeFiDTO> findAllAsDTO(AppLanguage lang);
-
-    public List<DemandeFiDTO> findAllAsClientDTO(AppLanguage lang);
-
-    List<DemandeFiDTO> findAllAsProDTO(AppLanguage lang);
 }

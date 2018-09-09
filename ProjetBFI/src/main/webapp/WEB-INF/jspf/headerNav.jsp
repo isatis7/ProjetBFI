@@ -33,9 +33,17 @@
 			</sec:authorize>
 
 			<sec:authorize access="hasRole('ROLE_USER_PRO')">
-				<li class="nav-item"><a class="nav-link"
-					href="<c:url value="/gestionportefeuille" />"><spring:message
-							code="commons.nav.gestionportefeuille" /></a></li>
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"> <spring:message
+							code="commons.nav.gestion.demandefi.portefeuilleClients" />
+				</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item"
+							href="<c:url value="/demandefi/histoFiPro" />"><spring:message
+								code="commons.nav.liste.demandefi.portefeuilleClients" /></a>
+					</div></li>
 			</sec:authorize>
 
 			<sec:authorize access="hasRole('ROLE_PO')">
@@ -66,7 +74,7 @@
 				</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item"
-							href="<c:url value="/demandefi/histoFi" />"><spring:message
+							href="<c:url value="/demandefi/histoFiAdminPO" />"><spring:message
 								code="commons.nav.histoFi" /></a>
 					</div></li>
 			</sec:authorize>
@@ -99,7 +107,7 @@
 				</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item"
-							href="<c:url value="/demandefi/histoFi" />"><spring:message
+							href="<c:url value="/demandefi/histoFiAdminPO" />"><spring:message
 								code="commons.nav.histoFi" /></a>
 					</div></li>
 			</sec:authorize>

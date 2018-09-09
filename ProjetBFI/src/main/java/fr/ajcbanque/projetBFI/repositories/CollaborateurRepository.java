@@ -39,13 +39,14 @@ public class CollaborateurRepository implements ICollaborateurRepository {
 	    dto.setEmail(collaborateur.getEmail());
 	    dto.setMatriculeInterne(collaborateur.getMatriculeInterne());
 	    dto.setNom(collaborateur.getNom());
-	    dto.setPrenom(collaborateur.getEmail());
+	    dto.setPrenom(collaborateur.getPrenom());
 	    result.add(dto);
 	    sb.setLength(0); // reinitialise à vide le StringBuilder
 	}
 	return result;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<CollaborateurDTO> findCustomCreateUserAsDTO() {
 	Query query = em.createQuery(
@@ -68,7 +69,7 @@ public class CollaborateurRepository implements ICollaborateurRepository {
 	    dto.setEmail(collaborateur.getEmail());
 	    dto.setMatriculeInterne(collaborateur.getMatriculeInterne());
 	    dto.setNom(collaborateur.getNom());
-	    dto.setPrenom(collaborateur.getEmail());
+	    dto.setPrenom(collaborateur.getPrenom());
 	    result.add(dto);
 	    sb.setLength(0); // reinitialise à vide le StringBuilder
 	}

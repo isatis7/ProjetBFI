@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import fr.ajcbanque.projetBFI.dto.DemandeFiDTO;
 import fr.ajcbanque.projetBFI.dto.UserDTO;
 import fr.ajcbanque.projetBFI.entities.User.Role;
 import fr.ajcbanque.projetBFI.services.IDemandeFiService;
@@ -40,7 +39,7 @@ public class HomeController extends BaseController {
 	    return "redirect:/demandefi/toCreate";
 	}
 	if (role.isPro()) {
-	    return "redirect:/demandefi/histoFi";
+	    return "redirect:/demandefi/histoFiPro";
 	}
 	return "welcome";
     }
@@ -54,9 +53,6 @@ public class HomeController extends BaseController {
     @PreAuthorize("hasRole('ROLE_USER_PRO')")
     @GetMapping("/toListDemande")
     public String toListDemande(Model model) {
-	List<DemandeFiDTO> demandes = demandeFiService
-		.findAllAsDTO(getAppLanguage());
-	model.addAttribute("demandes", demandes);
 	return "redirect:/demandefi/histoFi";
     }
 

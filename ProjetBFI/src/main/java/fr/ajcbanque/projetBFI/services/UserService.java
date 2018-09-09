@@ -80,7 +80,6 @@ public class UserService implements IUserService {
 
     @Override
     public List<UserDTO> findUsersEnabledAsDTO() {
-	// TODO Auto-generated method stub
 	return userRepository.findUsersEnabledAsDTO();
     }
 }
