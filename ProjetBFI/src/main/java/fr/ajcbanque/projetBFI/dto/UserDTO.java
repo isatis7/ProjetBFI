@@ -10,13 +10,14 @@ public class UserDTO {
     private String password;
     private Role   role;
     public boolean enabled;
+    private String infos;
 
     public UserDTO() {
 	//
     }
 
     public UserDTO(Long id, String lastname, String firstname, String email,
-	    String password, Role role, Boolean enabled) {
+	    String password, Role role, Boolean enabled, String infos) {
 	setId(id);
 	setLastname(lastname);
 	setFirstname(firstname);
@@ -24,6 +25,7 @@ public class UserDTO {
 	setPassword(password);
 	setRole(role);
 	setEnabled(enabled);
+	setInfos(infos);
     }
 
     public Long getId() {
@@ -80,5 +82,13 @@ public class UserDTO {
 
     public void setEnabled(boolean enabled) {
 	this.enabled = enabled;
+    }
+
+    public String getInfos() {
+	return infos;
+    }
+
+    public void setInfos(String infos) {
+	this.infos = infos;
     }
 }
