@@ -61,7 +61,7 @@ public class HomeController extends BaseController {
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_PO')")
     @GetMapping("/toListUser")
     public String toListUser(Model model) {
-	List<UserDTO> users = userService.findAllAsDTO(getAppLanguage());
+	List<UserDTO> users = userService.findAllAsDTO();
 	model.addAttribute("users", users);
 	return "userList";
     }
