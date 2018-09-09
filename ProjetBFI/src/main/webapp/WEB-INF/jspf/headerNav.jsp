@@ -22,14 +22,19 @@
 		<ul class="nav navbar-nav">
 
 			<sec:authorize access="hasRole('ROLE_USER_CLIENT')">
-				<li class="nav-item"><a class="nav-link"
-					href="<c:url value="/demandefi/toCreate" />"><spring:message
-							code="commons.nav.demandeFi" /></a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="<c:url value="/demandefi/histoFi" />"><spring:message
-							code="commons.nav.histoFi" /></a></li>
-				<li class="nav-item"><a class="nav-link" href="#"><spring:message
-							code="commons.nav.enCoursFi" /></a></li>
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"> <spring:message
+							code="commons.nav.demandeFi.client" />
+				</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item"
+							href="<c:url value="/demandefi/toCreate" />"><spring:message
+								code="commons.nav.demandeFi" /></a> <a class="dropdown-item"
+							href="<c:url value="/demandefi/histoFi" />"><spring:message
+								code="commons.nav.histoFi" /></a>
+					</div></li>
 			</sec:authorize>
 
 			<sec:authorize access="hasRole('ROLE_USER_PRO')">
