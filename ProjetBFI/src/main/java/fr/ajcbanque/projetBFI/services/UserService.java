@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import fr.ajcbanque.projetBFI.AppLanguage;
 import fr.ajcbanque.projetBFI.dto.UserDTO;
 import fr.ajcbanque.projetBFI.entities.User;
 import fr.ajcbanque.projetBFI.repositories.IUserJpaRepository;
@@ -55,8 +54,8 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public List<UserDTO> findAllAsDTO(AppLanguage lang) {
-	return userRepository.findAllAsDTO(lang);
+    public List<UserDTO> findAllAsDTO() {
+	return userRepository.findAllAsDTO();
     }
 
     @Override
@@ -64,5 +63,16 @@ public class UserService implements IUserService {
 	User user = findById(id);
 	user.setEnabled(false);
 	userJpaRepository.save(user);
+    }
+
+    @Override
+    public List<UserDTO> findClientsAsDTO() {
+	return userRepository.findClientsAsDTO();
+    }
+
+    @Override
+    public User getOne(Long id) {
+	Optional<User> optional = userJpaRepository.findById(id);
+	return optional.get();
     }
 }
