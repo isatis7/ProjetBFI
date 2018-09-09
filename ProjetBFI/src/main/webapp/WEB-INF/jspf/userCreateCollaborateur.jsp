@@ -50,7 +50,7 @@
 							cssErrorClass="form-control is-invalid"
 							onchange="getCollaborateurInfos(this.value)">
 							<form:option value="0">
-								<spring:message code="commons.forms.select" />
+								<spring:message code="commons.forms.select.collaborateur" />
 							</form:option>
 							<form:options items="${collaborateurs}" itemValue="id"
 								itemLabel="infoComplet" />

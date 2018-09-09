@@ -37,7 +37,7 @@
 						<form:select path="client.id" cssClass="form-control"
 							cssErrorClass="form-control is-invalid">
 							<form:option value="0">
-								<spring:message code="commons.forms.select" />
+								<spring:message code="commons.forms.select.client" />
 							</form:option>
 							<form:options items="${clients}" itemValue="id"
 								itemLabel="infoComplet" />
