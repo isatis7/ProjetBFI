@@ -60,8 +60,10 @@ public class UserService implements IUserService {
 
     @Override
     public void disable(Long id) {
-	User user = findById(id);
+	Optional<User> optional = userJpaRepository.findById(id);
+	User user = optional.get();
 	user.setEnabled(false);
+	encodePassword(user);
 	userJpaRepository.save(user);
     }
 
@@ -74,5 +76,11 @@ public class UserService implements IUserService {
     public User getOne(Long id) {
 	Optional<User> optional = userJpaRepository.findById(id);
 	return optional.get();
+    }
+
+    @Override
+    public List<UserDTO> findUsersEnabledAsDTO() {
+	// TODO Auto-generated method stub
+	return userRepository.findUsersEnabledAsDTO();
     }
 }

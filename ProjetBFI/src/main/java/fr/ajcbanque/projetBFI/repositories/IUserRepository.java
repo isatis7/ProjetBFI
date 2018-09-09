@@ -8,4 +8,6 @@ public interface IUserRepository {
     List<UserDTO> findAllAsDTO();
 
     List<UserDTO> findClientsAsDTO();
+
+    public List<UserDTO> findUsersEnabledAsDTO();
 }

@@ -29,9 +29,11 @@ public class HomeController extends BaseController {
     }
 
     @GetMapping("/welcome")
-    public String welcome() {
+    public String welcome(Model model) {
 	Role role = getRole();
 	if (role.isAdmin() || role.isPO()) {
+	    List<UserDTO> users = userService.findUsersEnabledAsDTO();
+	    model.addAttribute("users", users);
 	    return "userList";
 	}
 	if (role.isClient()) {
@@ -61,7 +63,7 @@ public class HomeController extends BaseController {
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_PO')")
     @GetMapping("/toListUser")
     public String toListUser(Model model) {
-	List<UserDTO> users = userService.findAllAsDTO();
+	List<UserDTO> users = userService.findUsersEnabledAsDTO();
 	model.addAttribute("users", users);
 	return "userList";
     }

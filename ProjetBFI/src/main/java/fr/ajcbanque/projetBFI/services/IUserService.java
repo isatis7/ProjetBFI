@@ -19,4 +19,6 @@ public interface IUserService {
     public List<UserDTO> findClientsAsDTO();
 
     public User getOne(Long id);
+
+    public List<UserDTO> findUsersEnabledAsDTO();
 }
