@@ -17,15 +17,33 @@ public class DemandeFiRepository extends BaseRepository
     @SuppressWarnings("unchecked")
     @Override
     public List<DemandeFiDTO> findByIdUserAsDTO(AppLanguage lang, Long id) {
-	StringBuilder queryBuilder = new StringBuilder(
-		"select new fr.ajcbanque.projetBFI.dto.DemandeFiDTO(");
-	queryBuilder.append(
-		"d.id, d.user.client.nom, d.dateDemande, d.reference, d.duree, d.dateEffective, d.montant, d.devise.codeIso, d.typeFinancement.nom)");
-	queryBuilder.append(" from DemandeFinancement d");
-	queryBuilder.append(" where d.user.id=" + id);
-	queryBuilder.append(" order by d.dateDemande DESC");
-	Query query = em.createQuery(queryBuilder.toString());
-	return query.getResultList();
+	Query query = em.createQuery(
+		"select d from DemandeFinancement d where d.user.id=" + id
+			+ " order by d.dateDemande DESC");
+	List<DemandeFinancement> demandes = query.getResultList();
+	List<DemandeFiDTO> result = new ArrayList<>(demandes.size());
+	DemandeFiDTO dto = null;
+	StringBuilder sb = new StringBuilder();
+	for (DemandeFinancement demande : demandes) {
+	    dto = new DemandeFiDTO();
+	    dto.setId(demande.getId());
+	    dto.setClient(demande.getUser().getClient().getNom() + " - "
+		    + demande.getUser().getFirstname() + " "
+		    + demande.getUser().getLastname() + " "
+		    + demande.getUser().getEmail());
+	    dto.setDateDemande(demande.getDateDemande());
+	    dto.setDateEffective(demande.getDateEffective());
+	    dto.setDevise(demande.getDevise().getCodeIso());
+	    dto.setDuree(demande.getDuree());
+	    dto.setMontant(demande.getMontant());
+	    dto.setPerfPlus(demande.getPerfPlus());
+	    dto.setReference(demande.getReference());
+	    dto.setTypeFinancement(demande.getTypeFinancement().getNom());
+	    dto.setValidation(demande.isValidation());
+	    result.add(dto);
+	    sb.setLength(0); // reinitialise à vide le StringBuilder
+	}
+	return result;
     }
 
     @SuppressWarnings("unchecked")
