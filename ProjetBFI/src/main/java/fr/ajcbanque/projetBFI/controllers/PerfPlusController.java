@@ -43,7 +43,7 @@ public class PerfPlusController {
 	    model.addAttribute("success", true);
 	    model.addAttribute("parametres", new Parametres());
 	}
-	return "perfplus";
+	return "redirect:/perfplus/toUpdate/1";
     }
 
     private boolean validateAndSave(Parametres parametres, BindingResult result,

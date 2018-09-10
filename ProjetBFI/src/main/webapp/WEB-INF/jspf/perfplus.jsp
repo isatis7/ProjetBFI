@@ -25,17 +25,39 @@
 					</h1>
 
 					<c:if test="${success}">
-						<div class="alert alert-success"> <spring:message
-								code="commons.forms.update.perfplus.success" />
+						<div class="alert alert-success">
+							<spring:message code="commons.forms.update.perfplus.success" />
 						</div>
 					</c:if>
-					
+
 					<c:if test="${erreur}">
-						<div class="alert alert-danger"> <b>Erreur: </b><spring:message
-								code="commons.forms.update.perfplus.failed" />
+						<div class="alert alert-danger">
+							<b>Erreur: </b>
+							<spring:message code="commons.forms.update.perfplus.failed" />
 						</div>
 					</c:if>
-					
+
+					<%
+					    if (request.getParameter("success") != null) {
+					%>
+					<div class="alert alert-success">
+						<spring:message code="commons.forms.update.perfplus.success" />
+					</div>
+					<%
+					    }
+					%>
+
+					<%
+					    if (request.getParameter("erreur") != null) {
+					%>
+					<div class="alert alert-danger">
+						<b>Erreur: </b>
+						<spring:message code="commons.forms.update.perfplus.failed" />
+					</div>
+					<%
+					    }
+					%>
+
 					<c:url value="/perfplus/update" var="formUrl" />
 					<form:form method="POST" action="${formUrl}"
 						modelAttribute="parametres">
