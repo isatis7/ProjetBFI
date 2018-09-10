@@ -17,13 +17,11 @@ import fr.ajcbanque.projetBFI.services.IUserService;
 @Controller
 @RequestMapping("/home")
 public class HomeController extends BaseController {
-    private final IDemandeFiService demandeFiService;
-    private final IUserService	    userService;
+    private final IUserService userService;
 
     @Autowired
     protected HomeController(IDemandeFiService demandeFiService,
 	    IUserService userService) {
-	this.demandeFiService = demandeFiService;
 	this.userService = userService;
     }
 
