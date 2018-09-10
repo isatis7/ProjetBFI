@@ -49,7 +49,8 @@ public class DemandeFiRepository extends BaseRepository
     @SuppressWarnings("unchecked")
     @Override
     public List<DemandeFiDTO> findAllAsDTO(AppLanguage lang) {
-	Query query = em.createQuery("from DemandeFinancement");
+	Query query = em.createQuery(
+		"select d from DemandeFinancement order by d.dateDemande DESC");
 	List<DemandeFinancement> demandes = query.getResultList();
 	List<DemandeFiDTO> result = new ArrayList<>(demandes.size());
 	DemandeFiDTO dto = null;
@@ -81,7 +82,7 @@ public class DemandeFiRepository extends BaseRepository
     public List<DemandeFiDTO> findAllProAsDTO(AppLanguage lang, Long id) {
 	Query query = em.createQuery(
 		"select d from DemandeFinancement d where d.user IN (select p from User u join u.porteFeuilleClients p where u.id ="
-			+ id + ")");
+			+ id + ") order by d.dateDemande DESC");
 	List<DemandeFinancement> demandes = query.getResultList();
 	List<DemandeFiDTO> result = new ArrayList<>(demandes.size());
 	DemandeFiDTO dto = null;
