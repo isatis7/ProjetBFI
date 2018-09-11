@@ -50,7 +50,7 @@ public class DemandeFiRepository extends BaseRepository
     @Override
     public List<DemandeFiDTO> findAllAsDTO(AppLanguage lang) {
 	Query query = em.createQuery(
-		"select d from DemandeFinancement order by d.dateDemande DESC");
+		"select d from DemandeFinancement d order by d.dateDemande DESC");
 	List<DemandeFinancement> demandes = query.getResultList();
 	List<DemandeFiDTO> result = new ArrayList<>(demandes.size());
 	DemandeFiDTO dto = null;
